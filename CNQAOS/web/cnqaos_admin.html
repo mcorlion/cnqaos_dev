@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html data-ng-app="AdminModule">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+          <!-- SCROLLS -->
+	  <!-- load bootstrap and fontawesome via CDN -->
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+	  <!-- SPELLS -->
+	  <!-- load angular via CDN -->
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script> 
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+          <script src="resources/js/admin/admin.js" type="text/javascript"></script>
+          <script src="resources/js/center/center.js" type="text/javascript"></script>
+          <script src="resources/js/student/student.js" type="text/javascript"></script>
+          <script src="resources/js/teacher/teacher.js" type="text/javascript"></script>
+          <script src="resources/js/training/training.js" type="text/javascript"></script>
+          <script src="resources/js/subject/subject.js" type="text/javascript"></script>
+    </head>
+    <body>
+		<!-- HEADER AND NAVBAR -->
+		<header>
+			<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">CNQAOS</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><i class="fa fa-home"></i> Center</a></li>
+					<li><a href="#student"><i class="fa fa-shield"></i> Student</a></li>
+					<li><a href="#teacher"><i class="fa fa-shield"></i> Teacher</a></li>
+                                        <li><a href="#training"><i class="fa fa-shield"></i> Training</a></li>
+                                        <li><a href="#subject"><i class="fa fa-shield"></i> Subject</a></li>
+<!--                                        <li><a href="#teacher_sub"><i class="fa fa-shield"></i> Teacher-Subject</a></li>
+                                        <li><a href="#taining_center"><i class="fa fa-shield"></i> Training-Center</a></li>-->
+				</ul>
+			</div>
+			</nav>
+		</header>
+		<!-- MAIN CONTENT AND INJECTED VIEWS -->
+		<div id="main">
+
+                    <!-- angular templating -->
+                    <!-- this is where content will be injected -->
+                    <div data-ng-view></div>
+
+		</div>
+		<!-- FOOTER -->
+		<footer class="text-center">
+                    <h1>CNQAOS</h1>
+		</footer>
+    </body>
+</html>
