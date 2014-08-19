@@ -1,7 +1,7 @@
 <div>
     <table class="table">
         <tr>  
-            <th>#</th>  
+<!--            <th>#</th>  -->
             <td>Name</td>  
             <th>Address</th>  
             <th>Street</th>  
@@ -9,14 +9,14 @@
             <th>PIN</th>  
             <th>Description</th>  
             <th>Latitude</th> 
-            <th>Longitude</th> 
-            <th>Longitude</th> 
+            <th>Longitude</th>  
         </tr>
         <tr data-ng-repeat="center in centerList">
 <!--            <td>{{ }}</td>-->
             <td>{{center.centerName}}</td>
             <td>{{center.centerAddress}}</td>
             <td>{{center.street}}</td>
+            <td>{{center.city}}</td>
             <td>{{center.pin}}</td>
             <td>{{center.description}}</td>
             <td>{{center.latitude}}</td>
@@ -27,39 +27,66 @@
 </div>
     <div>
         <form role="form">
-            <div class="form-group">
-                <label for="centerName">Center Name</label>
-                <input type="text" data-ng-model="center.centerName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="centerName" placeholder="Enter Center Name">
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="centerName">Center Name</label>
+                    <input type="text" data-ng-model="center.centerName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="centerName" placeholder="Enter Center Name">
+                </div>
             </div>
             
-            <div class="form-group">
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
                 <label for="centerAddress">Address</label>
-                <input type="text" data-ng-model="center.centerAddress" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerAddress" placeholder="Enter Center Address">
+                <input type="text" data-ng-model="center.centerAddress" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerAddress" placeholder="Enter Center Address">            
+                </div>
             </div>
             
-            <div class="form-group">
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
                 <label for="centerStreet">Street</label>
                 <input type="text" data-ng-model="center.street" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerStreet" placeholder="Enter Center Street">
+                </div>
             </div>
             
-            <div class="form-group">
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="pin">City</label>
+                <input type="text" data-ng-model="center.city" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="city" placeholder="Enter Center ZIP CODE">
+            
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
                 <label for="pin">Zip code</label>
                 <input type="text" data-ng-model="center.pin" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="pin" placeholder="Enter Center ZIP CODE">
+            
+                </div>
             </div>
             
-            <div class="form-group">
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
                 <label for="description">Description</label>
                 <input type="text" data-ng-model="center.description" ng-minlength="1" ng-maxlength="50" ng-required="false" class="form-control" id="description" placeholder="Enter Center Description">
-            </div>
             
-            <div class="form-group">
+                </div>
+            </div>            
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
                 <label for="latitude">Latitude</label>
                 <input type="text" data-ng-model="center.latitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="latitude" placeholder="Enter Center Latitude from Google Map">
+            
+                </div>
             </div>
             
-            <div class="form-group">
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
                 <label for="longitude">Longitude</label>
                 <input type="text" data-ng-model="center.longitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="longitude" placeholder="Enter Center Longitude from Google Map">
+            
+                </div>
             </div>
             
             <button data-ng-click="create(center)" class="btn btn-default">Submit</button>

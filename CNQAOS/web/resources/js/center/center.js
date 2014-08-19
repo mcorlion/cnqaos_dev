@@ -45,6 +45,7 @@ admin.controller('CenterController', function($scope,$http) {
         }
 
         $scope.create=function(center){
+            console.log(center);
             $http.post($scope.addURI,center)
                     .success(function(data){
                         $scope.centerList.push(data); 
