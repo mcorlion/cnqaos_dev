@@ -81,7 +81,7 @@ public class CenterREST {
         System.out.println("...................................");
         
         Center center  = new Center();
-        center.setCenterIdPk(id);
+        //center.setCenterIdPk(id);
         
         center.setCenterName(centerName);
         center.setCenterAddress(centerAddress);
