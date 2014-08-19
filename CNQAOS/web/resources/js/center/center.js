@@ -39,18 +39,22 @@ admin.controller('CenterController', function($scope,$http) {
                     console.log(data);
                     $scope.loading = false;
         });
-
-        $scope.create=function(center){
-            console.log(center);
+        var transform = function(data){
+               return $.param(data);
+        }
+        
+        $scope.create=function(){
+            console.log($scope.center);
             $http({
                     method: 'POST',
                     url: $scope.addURI,
-                    data: center,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    data: $scope.center,
+                    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
             })
             .success(function(data){
                 console.log("success "+data);
-                $scope.centerList.push(data); 
+                $scope.centerList.push($scope.center); 
                 $scope.center={};
             })
             .error(function(data){

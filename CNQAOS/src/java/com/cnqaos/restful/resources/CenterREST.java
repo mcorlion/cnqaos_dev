@@ -15,6 +15,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -43,10 +44,20 @@ public class CenterREST {
         }
         return centerList.build().toString();
     }
+    
+//    @POST
+//    @Path("/add")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String createCenter(@PathParam("data") String data){
+//        System.out.println("............. "+data);
+//        return Response.status(200).toString();
+//    }
 
     @POST
     @Path("/add")
     @Consumes("application/x-www-form-urlencoded")
+    @Produces(MediaType.APPLICATION_JSON)
     public String createCenter(
         @DefaultValue("0")    @FormParam ("id") int id,
             @FormParam ("centerName") String centerName,
