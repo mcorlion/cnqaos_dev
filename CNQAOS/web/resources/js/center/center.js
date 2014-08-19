@@ -44,7 +44,6 @@ admin.controller('CenterController', function($scope,$http) {
         }
         
         $scope.create=function(){
-            console.log($scope.center);
             $http({
                     method: 'POST',
                     url: $scope.addURI,
@@ -53,7 +52,6 @@ admin.controller('CenterController', function($scope,$http) {
                     transformRequest: transform
             })
             .success(function(data){
-                console.log("success "+data);
                 $scope.centerList.push($scope.center); 
                 $scope.center={};
             })
@@ -72,19 +70,19 @@ admin.controller('CenterController', function($scope,$http) {
         }
 
         $scope.delete=function(center){
-            $http.post($scope.deleteURI,center)
-                    .success(function(data){
-                        $.each($scope.centerList, function (i) {  
-                            if ($scope.centerList[i].id === center.id) {  
-                                 $scope.centerList.splice(i, 1);
-                                 return false;
-                            }
-                        });
-                    })
-                    .error(function(data){
-                        $scope.error = "An Error has occured while deleting center!"; 
-                        console.log(data);
-                    });
+            $http.post($scope.deleteURI,center.id)
+            .success(function(data){
+                $.each($scope.centerList, function (i) {  
+                    if ($scope.centerList[i].id === center.id) {  
+                         $scope.centerList.splice(i, 1);
+                         return false;
+                    }
+                });
+            })
+            .error(function(data){
+                $scope.error = "An Error has occured while deleting center!"; 
+                console.log(data);
+            });
         }
 
 });

@@ -27,6 +27,7 @@ public class CenterBDO {
             transaction.commit();
         }catch(Exception ex){
              if(transaction != null)transaction.rollback();
+             ex.printStackTrace();
             throw ex;
         }
     }

@@ -69,6 +69,7 @@ public class CenterREST {
             @FormParam ("latitude") double latitude,
             @FormParam ("longitude") double longitude) {
         System.out.println("...................................");
+        System.out.println(" id "+ id);
         System.out.println(" name"+ centerName);
         System.out.println(" address "+ centerAddress);
         System.out.println(" street "+ street);
@@ -99,7 +100,7 @@ public class CenterREST {
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return Response.status(200).toString();
+            return Response.status(500).toString();
         }
         
         return Response.status(200).toString();
@@ -107,17 +108,18 @@ public class CenterREST {
     
     @POST
     @Path("/delete")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String deleteCenter(@QueryParam("id") int id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCenter(@QueryParam("id") int id) {
         CenterBDO centerBDO = new CenterBDO();
+        System.out.println(" remove id "+id);
         try{
             centerBDO.remove(id);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return Response.status(500).toString();
+            return Response.status(500).build();
         }
         
-        return Response.status(200).toString();
+        return Response.status(200).build();
     }
     
     @GET
