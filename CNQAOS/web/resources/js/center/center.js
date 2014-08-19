@@ -40,21 +40,23 @@ admin.controller('CenterController', function($scope,$http) {
                     $scope.loading = false;
         });
 
-        $scope.toggleEdit = function () {  
-            this.friend.editMode = !this.friend.editMode;
-        }
-
         $scope.create=function(center){
             console.log(center);
-            $http.post($scope.addURI,center)
-                    .success(function(data){
-                        $scope.centerList.push(data); 
-                        $scope.center={};
-                    })
-                    .error(function(data){
-                        $scope.error = "An Error has occured while adding center!"; 
-                        console.log(data);
-                    });
+            $http({
+                    method: 'POST',
+                    url: $scope.addURI,
+                    data: center,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+            .success(function(data){
+                console.log("success "+data);
+                $scope.centerList.push(data); 
+                $scope.center={};
+            })
+            .error(function(data){
+                $scope.error = "An Error has occured while adding center!"; 
+                console.log(data);
+            });
         }
 
         $scope.edit=function(center){

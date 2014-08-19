@@ -11,6 +11,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -45,19 +46,31 @@ public class CenterREST {
 
     @POST
     @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes("application/x-www-form-urlencoded")
     public String createCenter(
-        @DefaultValue("0")    @QueryParam("id") int id,
-            @QueryParam("centerName") String centerName,
-            @QueryParam("centerAddress") String centerAddress,
-            @QueryParam("street") String street,
-            @QueryParam("city") String city,
-            @QueryParam("pin") String pin,
-        @DefaultValue("NA")    @QueryParam("description") String description,
-            @QueryParam("latitude") double latitude,
-            @QueryParam("longitude") double longitude) {
+        @DefaultValue("0")    @FormParam ("id") int id,
+            @FormParam ("centerName") String centerName,
+            @FormParam ("centerAddress") String centerAddress,
+            @FormParam ("street") String street,
+            @FormParam ("city") String city,
+            @FormParam ("pin") String pin,
+        @DefaultValue("NA")    @FormParam ("description") String description,
+            @FormParam ("latitude") double latitude,
+            @FormParam ("longitude") double longitude) {
+        System.out.println("...................................");
+        System.out.println(" name"+ centerName);
+        System.out.println(" address "+ centerAddress);
+        System.out.println(" street "+ street);
+        System.out.println(" city "+ city);         
+        System.out.println(" pin "+ pin);         
+        System.out.println(" description "+ description);   
+        System.out.println(" latitude "+ latitude);        
+        System.out.println(" longitude "+ longitude);        
+        System.out.println("...................................");
+        
         Center center  = new Center();
         center.setCenterIdPk(id);
+        
         center.setCenterName(centerName);
         center.setCenterAddress(centerAddress);
         center.setStreet(street);
