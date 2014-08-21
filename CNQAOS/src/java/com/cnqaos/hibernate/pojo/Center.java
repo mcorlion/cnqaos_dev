@@ -1,8 +1,6 @@
 package com.cnqaos.hibernate.pojo;
 
-import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -21,10 +19,10 @@ public class Center implements java.io.Serializable {
     private String city;
     private String pin;
     private String description;
-    private double latitude;
-    private double longitude;
-    private Set centreTrainings = new HashSet(0);
-    private Set studentCentres = new HashSet(0);
+    private Double latitude;
+    private Double longitude;
+    private Set studentCenters = new HashSet(0);
+    private Set centerTrainings = new HashSet(0);
 
 	// Constructors
     /**
@@ -37,7 +35,7 @@ public class Center implements java.io.Serializable {
      * minimal constructor
      */
     public Center(String centerName, String centerAddress, String street,
-            String city, double latitude, double longitude) {
+            String city, Double latitude, Double longitude) {
         this.centerName = centerName;
         this.centerAddress = centerAddress;
         this.street = street;
@@ -50,7 +48,8 @@ public class Center implements java.io.Serializable {
      * full constructor
      */
     public Center(String centerName, String centerAddress, String street,
-            String city, String pin, String description, double latitude, double longitude) {
+            String city, String pin, String description, Double latitude,
+            Double longitude, Set studentCenters, Set centerTrainings) {
         this.centerName = centerName;
         this.centerAddress = centerAddress;
         this.street = street;
@@ -59,6 +58,8 @@ public class Center implements java.io.Serializable {
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.studentCenters = studentCenters;
+        this.centerTrainings = centerTrainings;
     }
 
 	// Property accessors
@@ -118,66 +119,38 @@ public class Center implements java.io.Serializable {
         this.description = description;
     }
 
-    public Set getCentreTrainings() {
-        return this.centreTrainings;
+    public Double getLatitude() {
+        return this.latitude;
     }
 
-    public void setCentreTrainings(Set centreTrainings) {
-        this.centreTrainings = centreTrainings;
-    }
-
-    public Set getStudentCentres() {
-        return this.studentCentres;
-    }
-
-    public void setStudentCentres(Set studentCentres) {
-        this.studentCentres = studentCentres;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public Double getLongitude() {
+        return this.longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.centerName);
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.latitude) ^ (Double.doubleToLongBits(this.latitude) >>> 32));
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.longitude) ^ (Double.doubleToLongBits(this.longitude) >>> 32));
-        return hash;
+    public Set getStudentCenters() {
+        return this.studentCenters;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Center other = (Center) obj;
-        if (!Objects.equals(this.centerName, other.centerName)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.latitude) != Double.doubleToLongBits(other.latitude)) {
-            return false;
-        }
-        return Double.doubleToLongBits(this.longitude) == Double.doubleToLongBits(other.longitude);
+    public void setStudentCenters(Set studentCenters) {
+        this.studentCenters = studentCenters;
     }
 
-    @Override
+    public Set getCenterTrainings() {
+        return this.centerTrainings;
+    }
+
+    public void setCenterTrainings(Set centerTrainings) {
+        this.centerTrainings = centerTrainings;
+    }
+ @Override
     public String toString(){
         JsonObjectBuilder builder = Json.createObjectBuilder();
         builder.add("id",centerIdPk)
@@ -205,5 +178,4 @@ public class Center implements java.io.Serializable {
                 .add("longitude",longitude);
         return builder.build();
     }
-    
 }

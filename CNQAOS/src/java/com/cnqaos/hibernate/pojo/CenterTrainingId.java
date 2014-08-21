@@ -8,9 +8,9 @@ public class CenterTrainingId implements java.io.Serializable {
 
 	// Fields
 
-	private Integer centreIdFk;
+	private Integer centerIdFk;
 	private Integer trainingIdFk;
-
+	private String description;
 
 	// Constructors
 
@@ -19,19 +19,27 @@ public class CenterTrainingId implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public CenterTrainingId(Integer centreIdFk, Integer trainingIdFk) {
-		this.centreIdFk = centreIdFk;
+	public CenterTrainingId(Integer centerIdFk, Integer trainingIdFk) {
+		this.centerIdFk = centerIdFk;
 		this.trainingIdFk = trainingIdFk;
+	}
+
+	/** full constructor */
+	public CenterTrainingId(Integer centerIdFk, Integer trainingIdFk,
+			String description) {
+		this.centerIdFk = centerIdFk;
+		this.trainingIdFk = trainingIdFk;
+		this.description = description;
 	}
 
 	// Property accessors
 
-	public Integer getCentreIdFk() {
-		return this.centreIdFk;
+	public Integer getCenterIdFk() {
+		return this.centerIdFk;
 	}
 
-	public void setCentreIdFk(Integer centreIdFk) {
-		this.centreIdFk = centreIdFk;
+	public void setCenterIdFk(Integer centerIdFk) {
+		this.centerIdFk = centerIdFk;
 	}
 
 	public Integer getTrainingIdFk() {
@@ -40,6 +48,14 @@ public class CenterTrainingId implements java.io.Serializable {
 
 	public void setTrainingIdFk(Integer trainingIdFk) {
 		this.trainingIdFk = trainingIdFk;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public boolean equals(Object other) {
@@ -51,13 +67,17 @@ public class CenterTrainingId implements java.io.Serializable {
 			return false;
 		CenterTrainingId castOther = (CenterTrainingId) other;
 
-		return ((this.getCentreIdFk() == castOther.getCentreIdFk()) || (this
-				.getCentreIdFk() != null && castOther.getCentreIdFk() != null && this
-				.getCentreIdFk().equals(castOther.getCentreIdFk())))
+		return ((this.getCenterIdFk() == castOther.getCenterIdFk()) || (this
+				.getCenterIdFk() != null && castOther.getCenterIdFk() != null && this
+				.getCenterIdFk().equals(castOther.getCenterIdFk())))
 				&& ((this.getTrainingIdFk() == castOther.getTrainingIdFk()) || (this
 						.getTrainingIdFk() != null
 						&& castOther.getTrainingIdFk() != null && this
-						.getTrainingIdFk().equals(castOther.getTrainingIdFk())));
+						.getTrainingIdFk().equals(castOther.getTrainingIdFk())))
+				&& ((this.getDescription() == castOther.getDescription()) || (this
+						.getDescription() != null
+						&& castOther.getDescription() != null && this
+						.getDescription().equals(castOther.getDescription())));
 	}
 
 	public int hashCode() {
@@ -65,13 +85,16 @@ public class CenterTrainingId implements java.io.Serializable {
 
 		result = 37
 				* result
-				+ (getCentreIdFk() == null ? 0 : this.getCentreIdFk()
+				+ (getCenterIdFk() == null ? 0 : this.getCenterIdFk()
 						.hashCode());
 		result = 37
 				* result
 				+ (getTrainingIdFk() == null ? 0 : this.getTrainingIdFk()
 						.hashCode());
-
+		result = 37
+				* result
+				+ (getDescription() == null ? 0 : this.getDescription()
+						.hashCode());
 		return result;
 	}
 

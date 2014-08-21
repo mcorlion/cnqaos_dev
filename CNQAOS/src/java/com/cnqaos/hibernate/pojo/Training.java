@@ -16,7 +16,7 @@ public class Training implements java.io.Serializable {
 	private String trainingName;
 	private String description;
 	private Set trainingSubjects = new HashSet(0);
-	private Set centreTrainings = new HashSet(0);
+	private Set centerTrainings = new HashSet(0);
 
 	// Constructors
 
@@ -32,12 +32,12 @@ public class Training implements java.io.Serializable {
 
 	/** full constructor */
 	public Training(TrainingType trainingType, String trainingName,
-			String description, Set trainingSubjects, Set centreTrainings) {
+			String description, Set trainingSubjects, Set centerTrainings) {
 		this.trainingType = trainingType;
 		this.trainingName = trainingName;
 		this.description = description;
 		this.trainingSubjects = trainingSubjects;
-		this.centreTrainings = centreTrainings;
+		this.centerTrainings = centerTrainings;
 	}
 
 	// Property accessors
@@ -82,12 +82,12 @@ public class Training implements java.io.Serializable {
 		this.trainingSubjects = trainingSubjects;
 	}
 
-	public Set getCentreTrainings() {
-		return this.centreTrainings;
+	public Set getCenterTrainings() {
+		return this.centerTrainings;
 	}
 
-	public void setCentreTrainings(Set centreTrainings) {
-		this.centreTrainings = centreTrainings;
+	public void setCenterTrainings(Set centerTrainings) {
+		this.centerTrainings = centerTrainings;
 	}
 
 }

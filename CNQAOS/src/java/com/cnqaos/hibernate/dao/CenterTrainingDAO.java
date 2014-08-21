@@ -13,7 +13,7 @@ import com.cnqaos.hibernate.pojo.CenterTrainingId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- CenterTraining entities. Transaction control of the save(), update() and
+ * CenterTraining entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
@@ -29,7 +29,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	// property constants
 
 	public void save(CenterTraining transientInstance) {
-		log.debug("saving CentreTraining instance");
+		log.debug("saving CenterTraining instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -40,7 +40,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public void delete(CenterTraining persistentInstance) {
-		log.debug("deleting CentreTraining instance");
+		log.debug("deleting CenterTraining instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -51,10 +51,10 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public CenterTraining findById(com.cnqaos.hibernate.pojo.CenterTrainingId id) {
-		log.debug("getting CentreTraining instance with id: " + id);
+		log.debug("getting CenterTraining instance with id: " + id);
 		try {
 			CenterTraining instance = (CenterTraining) getSession().get(
-					"com.cnqaos.hibernate.pojo.CentreTraining", id);
+					"com.cnqaos.hibernate.pojo.CenterTraining", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -63,10 +63,10 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public List findByExample(CenterTraining instance) {
-		log.debug("finding CentreTraining instance by example");
+		log.debug("finding CenterTraining instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("com.cnqaos.hibernate.pojo.CentreTraining")
+					.createCriteria("com.cnqaos.hibernate.pojo.CenterTraining")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -78,10 +78,10 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding CentreTraining instance with property: "
+		log.debug("finding CenterTraining instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from CentreTraining as model where model."
+			String queryString = "from CenterTraining as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -93,9 +93,9 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public List findAll() {
-		log.debug("finding all CentreTraining instances");
+		log.debug("finding all CenterTraining instances");
 		try {
-			String queryString = "from CentreTraining";
+			String queryString = "from CenterTraining";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -105,7 +105,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public CenterTraining merge(CenterTraining detachedInstance) {
-		log.debug("merging CentreTraining instance");
+		log.debug("merging CenterTraining instance");
 		try {
 			CenterTraining result = (CenterTraining) getSession().merge(
 					detachedInstance);
@@ -118,7 +118,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public void attachDirty(CenterTraining instance) {
-		log.debug("attaching dirty CentreTraining instance");
+		log.debug("attaching dirty CenterTraining instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -129,7 +129,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 	}
 
 	public void attachClean(CenterTraining instance) {
-		log.debug("attaching clean CentreTraining instance");
+		log.debug("attaching clean CenterTraining instance");
 		try {
 			getSession().buildLockRequest(LockOptions.NONE).lock(instance);
 			log.debug("attach successful");

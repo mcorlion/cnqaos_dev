@@ -33,6 +33,7 @@ public class UserMasterDAO extends BaseHibernateDAO {
 	public static final String PHONE_NUMBER = "phoneNumber";
 	public static final String CELLPHONE_NUMBER = "cellphoneNumber";
 	public static final String EMAIL_ADDRESS = "emailAddress";
+	public static final String PASSWORD = "password";
 
 	public void save(UserMaster transientInstance) {
 		log.debug("saving UserMaster instance");
@@ -120,6 +121,10 @@ public class UserMasterDAO extends BaseHibernateDAO {
 
 	public List findByEmailAddress(Object emailAddress) {
 		return findByProperty(EMAIL_ADDRESS, emailAddress);
+	}
+
+	public List findByPassword(Object password) {
+		return findByProperty(PASSWORD, password);
 	}
 
 	public List findAll() {

@@ -20,9 +20,10 @@ public class UserMaster implements java.io.Serializable {
 	private String phoneNumber;
 	private String cellphoneNumber;
 	private String emailAddress;
+	private String password;
 	private Set subjectTeachers = new HashSet(0);
+	private Set studentCenters = new HashSet(0);
 	private Set employerStudentsForEmployerIdFk = new HashSet(0);
-	private Set studentCentres = new HashSet(0);
 	private Set employerStudentsForStudentIdFk = new HashSet(0);
 	private Set userRoles = new HashSet(0);
 
@@ -33,19 +34,21 @@ public class UserMaster implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public UserMaster(String id, String name, String surName, Date dateOfBirth) {
+	public UserMaster(String id, String name, String surName, Date dateOfBirth,
+			String password) {
 		this.id = id;
 		this.name = name;
 		this.surName = surName;
 		this.dateOfBirth = dateOfBirth;
+		this.password = password;
 	}
 
 	/** full constructor */
 	public UserMaster(String id, String name, String surName, Date dateOfBirth,
 			String phoneNumber, String cellphoneNumber, String emailAddress,
-			Set subjectTeachers, Set employerStudentsForEmployerIdFk,
-			Set studentCentres, Set employerStudentsForStudentIdFk,
-			Set userRoles) {
+			String password, Set subjectTeachers, Set studentCenters,
+			Set employerStudentsForEmployerIdFk,
+			Set employerStudentsForStudentIdFk, Set userRoles) {
 		this.id = id;
 		this.name = name;
 		this.surName = surName;
@@ -53,9 +56,10 @@ public class UserMaster implements java.io.Serializable {
 		this.phoneNumber = phoneNumber;
 		this.cellphoneNumber = cellphoneNumber;
 		this.emailAddress = emailAddress;
+		this.password = password;
 		this.subjectTeachers = subjectTeachers;
+		this.studentCenters = studentCenters;
 		this.employerStudentsForEmployerIdFk = employerStudentsForEmployerIdFk;
-		this.studentCentres = studentCentres;
 		this.employerStudentsForStudentIdFk = employerStudentsForStudentIdFk;
 		this.userRoles = userRoles;
 	}
@@ -126,12 +130,28 @@ public class UserMaster implements java.io.Serializable {
 		this.emailAddress = emailAddress;
 	}
 
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Set getSubjectTeachers() {
 		return this.subjectTeachers;
 	}
 
 	public void setSubjectTeachers(Set subjectTeachers) {
 		this.subjectTeachers = subjectTeachers;
+	}
+
+	public Set getStudentCenters() {
+		return this.studentCenters;
+	}
+
+	public void setStudentCenters(Set studentCenters) {
+		this.studentCenters = studentCenters;
 	}
 
 	public Set getEmployerStudentsForEmployerIdFk() {
@@ -141,14 +161,6 @@ public class UserMaster implements java.io.Serializable {
 	public void setEmployerStudentsForEmployerIdFk(
 			Set employerStudentsForEmployerIdFk) {
 		this.employerStudentsForEmployerIdFk = employerStudentsForEmployerIdFk;
-	}
-
-	public Set getStudentCentres() {
-		return this.studentCentres;
-	}
-
-	public void setStudentCentres(Set studentCentres) {
-		this.studentCentres = studentCentres;
 	}
 
 	public Set getEmployerStudentsForStudentIdFk() {

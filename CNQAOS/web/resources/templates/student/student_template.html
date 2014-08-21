@@ -1,5 +1,94 @@
-	<div class="jumbotron text-center">
-		<h1>Student Page</h1>
+<div>
+    <table class="table">
+        <tr>  
+<!--            <th>#</th>  -->
+            <td>ID</td>  
+            <td>Name</td>  
+            <th>Surname</th>  
+            <th>DOB</th>  
+            <th>Phone</th>  
+            <th>Mobile</th>  
+            <th>Email</th>  
+            <th>Center</th>   
+            <th>          </th>  
+        </tr>
+        <tr data-ng-repeat="student in studentList">
+<!--            <td>{{ }}</td>-->
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.surName}}</td>
+            <td>{{student.dateOfBirth}}</td>
+            <td>{{student.phoneNumber}}</td>
+            <td>{{student.cellphoneNumber}}</td>
+            <td>{{student.emailAddress}}</td>
+            <td>{{}}</td>
+            <td><p><a data-ng-click="edit(student)" href="javascript:;">Edit</a> | <a data-ng-click="delete(student)" href="javascript:;">Delete</a></p></td>
+        </tr>
+    </table>
+</div>
+    <div>
+        <form role="form">
 
-		<p>{{ message }}</p>
-	</div>
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="centerName">Center Name</label>
+                    <input type="text" data-ng-model="center.centerName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="centerName" placeholder="Enter Center Name">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="centerAddress">Address</label>
+                <input type="text" data-ng-model="center.centerAddress" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerAddress" placeholder="Enter Center Address">            
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="centerStreet">Street</label>
+                <input type="text" data-ng-model="center.street" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerStreet" placeholder="Enter Center Street">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="pin">City</label>
+                <input type="text" data-ng-model="center.city" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="city" placeholder="Enter City Name">            
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="pin">Zip code</label>
+                <input type="text" data-ng-model="center.pin" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="pin" placeholder="Enter Center ZIP CODE">            
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="description">Description</label>
+                <input type="text" data-ng-model="center.description" ng-minlength="1" ng-maxlength="50" ng-required="false" class="form-control" id="description" placeholder="Enter Center Description">
+            
+                </div>
+            </div>            
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="latitude">Latitude</label>
+                <input type="text" data-ng-model="center.latitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="latitude" placeholder="Enter Center Latitude from Google Map">
+            
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="longitude">Longitude</label>
+                <input type="text" data-ng-model="center.longitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="longitude" placeholder="Enter Center Longitude from Google Map">
+            
+                </div>
+            </div>
+            
+             <button data-ng-click="create()" class="btn btn-default">Submit</button>
+            <button data-ng-click="cancel()" class="btn btn-default">Cancel</button>
+        </form>
+    </div>

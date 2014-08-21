@@ -9,7 +9,7 @@ public class StudentCenterId implements java.io.Serializable {
 	// Fields
 
 	private Integer studentIdFk;
-	private Integer centreIdFk;
+	private Integer centerIdFk;
 
 	// Constructors
 
@@ -18,9 +18,9 @@ public class StudentCenterId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public StudentCenterId(Integer studentIdFk, Integer centreIdFk) {
+	public StudentCenterId(Integer studentIdFk, Integer centerIdFk) {
 		this.studentIdFk = studentIdFk;
-		this.centreIdFk = centreIdFk;
+		this.centerIdFk = centerIdFk;
 	}
 
 	// Property accessors
@@ -33,12 +33,12 @@ public class StudentCenterId implements java.io.Serializable {
 		this.studentIdFk = studentIdFk;
 	}
 
-	public Integer getCentreIdFk() {
-		return this.centreIdFk;
+	public Integer getCenterIdFk() {
+		return this.centerIdFk;
 	}
 
-	public void setCentreIdFk(Integer centreIdFk) {
-		this.centreIdFk = centreIdFk;
+	public void setCenterIdFk(Integer centerIdFk) {
+		this.centerIdFk = centerIdFk;
 	}
 
 	public boolean equals(Object other) {
@@ -53,10 +53,10 @@ public class StudentCenterId implements java.io.Serializable {
 		return ((this.getStudentIdFk() == castOther.getStudentIdFk()) || (this
 				.getStudentIdFk() != null && castOther.getStudentIdFk() != null && this
 				.getStudentIdFk().equals(castOther.getStudentIdFk())))
-				&& ((this.getCentreIdFk() == castOther.getCentreIdFk()) || (this
-						.getCentreIdFk() != null
-						&& castOther.getCentreIdFk() != null && this
-						.getCentreIdFk().equals(castOther.getCentreIdFk())));
+				&& ((this.getCenterIdFk() == castOther.getCenterIdFk()) || (this
+						.getCenterIdFk() != null
+						&& castOther.getCenterIdFk() != null && this
+						.getCenterIdFk().equals(castOther.getCenterIdFk())));
 	}
 
 	public int hashCode() {
@@ -68,7 +68,7 @@ public class StudentCenterId implements java.io.Serializable {
 						.hashCode());
 		result = 37
 				* result
-				+ (getCentreIdFk() == null ? 0 : this.getCentreIdFk()
+				+ (getCenterIdFk() == null ? 0 : this.getCenterIdFk()
 						.hashCode());
 		return result;
 	}

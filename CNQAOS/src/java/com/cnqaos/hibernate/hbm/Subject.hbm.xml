@@ -6,11 +6,11 @@
 -->
 <hibernate-mapping>
     <class name="com.cnqaos.hibernate.pojo.Subject" table="subject" catalog="cnqaos_dev">
-        <id name="subjectIdPk" type="integer">
+        <id name="subjectIdPk" type="java.lang.Integer">
             <column name="subject_id_pk" />
-            <generator class="increment" />
+            <generator class="sequence" />
         </id>
-        <property name="subjectName" type="string">
+        <property name="subjectName" type="java.lang.String">
             <column name="subject_name" length="100" not-null="true" />
         </property>
         <set name="trainingSubjects" inverse="true">

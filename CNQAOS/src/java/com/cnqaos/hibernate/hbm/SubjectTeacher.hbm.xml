@@ -7,10 +7,10 @@
 <hibernate-mapping>
     <class name="com.cnqaos.hibernate.pojo.SubjectTeacher" table="subject_teacher" catalog="cnqaos_dev">
         <composite-id name="id" class="com.cnqaos.hibernate.pojo.SubjectTeacherId">
-            <key-property name="subjectIdFk" type="integer">
+            <key-property name="subjectIdFk" type="java.lang.Integer">
                 <column name="subject_id_fk" />
             </key-property>
-            <key-property name="teacherIdFk" type="integer">
+            <key-property name="teacherIdFk" type="java.lang.Integer">
                 <column name="teacher_id_fk" />
             </key-property>
         </composite-id>

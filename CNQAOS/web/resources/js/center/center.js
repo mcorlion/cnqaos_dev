@@ -18,10 +18,8 @@ Center entity has below attributes.
 admin.controller('CenterController', function($scope,$http) {
         // property of center
         $scope.message = 'Center Conroller';
-        $scope.loading = true;
         $scope.center={};
         $scope.centerList=[];
-        $scope.addMode = false;
         $scope.listURI="/CNQAOS/rest/center/list";
         $scope.addURI="/CNQAOS/rest/center/add";
         $scope.deleteURI="/CNQAOS/rest/center/delete";
@@ -32,12 +30,9 @@ admin.controller('CenterController', function($scope,$http) {
         $http.get($scope.listURI)
                 .success(function(data){
                     $scope.centerList = data;
-                    $scope.loading = false;
                 })
                 .error(function(data){
                     $scope.error = "An Error has occured while loading centers!"; 
-                    console.log(data);
-                    $scope.loading = false;
         });
         var transform = function(data){
                return $.param(data);

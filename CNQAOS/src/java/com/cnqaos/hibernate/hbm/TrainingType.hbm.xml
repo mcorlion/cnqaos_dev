@@ -6,14 +6,14 @@
 -->
 <hibernate-mapping>
     <class name="com.cnqaos.hibernate.pojo.TrainingType" table="training_type" catalog="cnqaos_dev">
-        <id name="trainingTypeIdPk" type="integer">
+        <id name="trainingTypeIdPk" type="java.lang.Integer">
             <column name="training_type_id_pk" />
-            <generator class="increment" />
+            <generator class="sequence" />
         </id>
-        <property name="trainingTypeName" type="string">
+        <property name="trainingTypeName" type="java.lang.String">
             <column name="training_type_name" length="45" not-null="true" />
         </property>
-        <property name="description" type="string">
+        <property name="description" type="java.lang.String">
             <column name="description" length="200" />
         </property>
         <set name="trainings" inverse="true">

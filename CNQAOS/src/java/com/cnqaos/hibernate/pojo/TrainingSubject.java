@@ -11,7 +11,7 @@ public class TrainingSubject implements java.io.Serializable {
 	private TrainingSubjectId id;
 	private Subject subject;
 	private Training training;
-	private String description;
+
 	// Constructors
 
 	/** default constructor */
@@ -24,15 +24,6 @@ public class TrainingSubject implements java.io.Serializable {
 		this.id = id;
 		this.subject = subject;
 		this.training = training;
-	}
-	
-	/** full constructor */
-	public TrainingSubject(TrainingSubjectId id, Subject subject,
-			Training training,String description) {
-		this.id = id;
-		this.subject = subject;
-		this.training = training;
-		this.description = description;
 	}
 
 	// Property accessors
@@ -59,14 +50,6 @@ public class TrainingSubject implements java.io.Serializable {
 
 	public void setTraining(Training training) {
 		this.training = training;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 }

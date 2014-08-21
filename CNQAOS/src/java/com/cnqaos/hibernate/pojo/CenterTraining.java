@@ -9,26 +9,8 @@ public class CenterTraining implements java.io.Serializable {
 	// Fields
 
 	private CenterTrainingId id;
-        private Center center;
-        private Training training;
-        private String description;
-
-    public Center getCenter() {
-        return center;
-    }
-
-    public void setCenter(Center center) {
-        this.center = center;
-    }
-
-    public Training getTraining() {
-        return training;
-    }
-
-    public void setTraining(Training training) {
-        this.training = training;
-    }
-	
+	private Training training;
+	private Center center;
 
 	// Constructors
 
@@ -37,11 +19,10 @@ public class CenterTraining implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CenterTraining(CenterTrainingId id, Center center, Training training, String description) {
+	public CenterTraining(CenterTrainingId id, Training training, Center center) {
 		this.id = id;
-                this.center = center;
-                this.training = training;
-		this.description = description;
+		this.training = training;
+		this.center = center;
 	}
 
 	// Property accessors
@@ -54,12 +35,20 @@ public class CenterTraining implements java.io.Serializable {
 		this.id = id;
 	}
 
-    public String getDescription() {
-        return description;
-    }
+	public Training getTraining() {
+		return this.training;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setTraining(Training training) {
+		this.training = training;
+	}
+
+	public Center getCenter() {
+		return this.center;
+	}
+
+	public void setCenter(Center center) {
+		this.center = center;
+	}
 
 }
