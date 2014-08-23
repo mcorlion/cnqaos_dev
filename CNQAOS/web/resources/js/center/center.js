@@ -76,9 +76,7 @@ admin.controller('CenterController', function($scope,$http) {
             $scope.center.latitude = center.latitude;
             $scope.center.longitude = center.longitude;
         }
-        
-        $scope.assignValue=
-        
+            
         
         $scope.cancel=function(){
             $scope.center={};

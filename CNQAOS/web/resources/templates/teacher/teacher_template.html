@@ -1,94 +1,93 @@
 <div>
     <table class="table">
         <tr>  
-<!--            <th>#</th>  -->
-            <td>Name</td>  
-            <th>Address</th>  
-            <th>Street</th>  
-            <th>City</th>  
-            <th>PIN</th>  
-            <th>Description</th>  
-            <th>Latitude</th> 
-            <th>Longitude</th>  
+            <th>#</th>  
+            <td>ID</td>  
+            <th>First Name</th>  
+            <th>Last Name</th>  
+            <th>DOB</th>  
+            <th>Landline</th>  
+            <th>Mobile</th> 
+            <th>Email</th> 
+            <th>Center</th>  
             <th>          </th>  
         </tr>
-        <tr data-ng-repeat="center in centerList">
-<!--            <td>{{ }}</td>-->
-            <td>{{center.centerName}}</td>
-            <td>{{center.centerAddress}}</td>
-            <td>{{center.street}}</td>
-            <td>{{center.city}}</td>
-            <td>{{center.pin}}</td>
-            <td>{{center.description}}</td>
-            <td>{{center.latitude}}</td>
-            <td>{{center.longitude}}</td>
-            <td><p><a data-ng-click="edit(center)" href="javascript:;">Edit</a> | <a data-ng-click="delete(center)" href="javascript:;">Delete</a></p></td>
+        <tr data-ng-repeat=" in teacherList">
+            <td>{{$index+1 }}</td>
+            <td>{{teacher.id}}</td>
+            <td>{{teacher.name}}</td>
+            <td>{{teacher.surName}}</td>
+            <td>{{teacher.dateOfBirth}}</td>
+            <td>{{teacher.phoneNumber}}</td>
+            <td>{{teacher.cellphoneNumber}}</td>
+            <td>{{teacher.emailAddress}}</td>
+            <td>{{teacher.subjectName}}</td>
+            <td><p><a data-ng-click="edit(teacher)" href="javascript:;">Edit</a> | <a data-ng-click="delete(teacher)" href="javascript:;">Delete</a></p></td>
         </tr>
     </table>
 </div>
     <div>
-        <form role="form">
+        <form role="form" name="teacherForm" novalidate>
 
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                    <label for="centerName">Center Name</label>
-                    <input type="text" data-ng-model="center.centerName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="centerName" placeholder="Enter Center Name">
+                    <label for="teacherID">ID</label>
+                    <input type="text" name="teacherID" data-ng-model="teacher.id" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="teacherID" placeholder="Enter teacher Name">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="centerAddress">Address</label>
-                <input type="text" data-ng-model="center.centerAddress" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerAddress" placeholder="Enter Center Address">            
+                <label for="teacherName">First Name</label>
+                <input type="text" name="teacherName" data-ng-model="teacher.name" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="teacherName" placeholder="Enter First Name">            
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="centerStreet">Street</label>
-                <input type="text" data-ng-model="center.street" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerStreet" placeholder="Enter Center Street">
+                <label for="surName">Last Name</label>
+                <input type="text" name="surName" data-ng-model="teacher.surName" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="surName" placeholder="Enter Last Name">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="pin">City</label>
-                <input type="text" data-ng-model="center.city" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="city" placeholder="Enter City Name">            
+                <label for="dob">DOB</label>
+                <input type="text" name="dob" data-ng-model="teacher.dateOfBirth" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="dob" placeholder="Enter Date of Birth">            
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="pin">Zip code</label>
-                <input type="text" data-ng-model="center.pin" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="pin" placeholder="Enter Center ZIP CODE">            
+                <label for="phone">Landline</label>
+                <input type="text" name="phone" data-ng-model="teacher.phoneNumber" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="phone" placeholder="Enter Landline Number">            
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="description">Description</label>
-                <input type="text" data-ng-model="center.description" ng-minlength="1" ng-maxlength="50" ng-required="false" class="form-control" id="description" placeholder="Enter Center Description">
-            
+                <label for="mobile">Mobile</label>
+                <input type="text" name="mobile" data-ng-model="teacher.cellphoneNumber" ng-minlength="1" ng-maxlength="50" ng-required="false" class="form-control" id="mobile" placeholder="Enter Mobile Number">            
                 </div>
             </div>            
 
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="latitude">Latitude</label>
-                <input type="text" data-ng-model="center.latitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="latitude" placeholder="Enter Center Latitude from Google Map">
-            
+                <label for="email">E-mail</label>
+                <input type="text" name="email" data-ng-model="teacher.emailAddress" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="email" placeholder="Enter Email">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="longitude">Longitude</label>
-                <input type="text" data-ng-model="center.longitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="longitude" placeholder="Enter Center Longitude from Google Map">
-            
+                <label for="subject">Subject</label>
+                <select name="subject"  data-ng-model="teacher.subjectId" class="form-control" ng-options="subject.id as subject.name for subject in subjectList">
+                    <option value="">-- Select Subject --</option>
+                </select>
                 </div>
             </div>
             
              <button data-ng-click="create()" class="btn btn-default">Submit</button>
-            <button data-ng-click="cancel()" class="btn btn-default">Cancel</button>
+             <button data-ng-click="cancel()" class="btn btn-default">Cancel</button>
         </form>
     </div>

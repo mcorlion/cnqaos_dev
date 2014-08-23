@@ -1,9 +1,20 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+/***
+ It supports the subject entity.
+ Subject entity has below attributes.
+ {
+ "idPk":1,
+ "id" : "S101";
+ "name":"Micheal",
+ "surName":"Jackson",
+ "dateOfBirth":"19/11/1980",
+ "phoneNumber":"1234567892",
+ "cellphoneNumber":"08046789",
+ "emailAddress":"micheal.jackson@gmail.com",
+ "subjectId":1,
+ "subjectName":"Maths"
+ }
+ 
+ ***/
 
 	// create the controller and inject Angular's $scope
 	admin.controller('SubjectController', function($scope) {

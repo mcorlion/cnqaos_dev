@@ -11,6 +11,7 @@
  "cellphoneNumber":"08046789",
  "emailAddress":"micheal.jackson@gmail.com",
  "centerId":1
+ "centerName":"bangalore"
  }
  
  ***/
@@ -49,33 +50,60 @@ admin.controller('StudentController', function($scope) {
     var transform = function(data) {
         return $.param(data);
     }
-    $scope.create = function() {
+
+
+    $scope.create=function(){
         $http({
-            method: 'POST',
-            url: $scope.addURI,
-            data: $scope.student,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-            transformRequest: transform
+                method: 'POST',
+                url: $scope.addURI,
+                data: $scope.student,
+                headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
         })
-                .success(function(data) {
-                    $scope.studentList.push($scope.student);
-                    $scope.student = {};
-                })
-                .error(function(data) {
-                    $scope.error = "An Error has occured while adding student!";
-                    console.log(data);
-                });
+        .success(function(data){
+            var isEditStudent = false;
+            $.each($scope.studentList, function (i) {  
+                if ($scope.studentList[i].idPk === data.idPk) {  
+                     $scope.studentList[i] = data;
+                     isEditStudent  = true;
+                }
+            });
+            if(!isEditCenter){
+                $scope.studentList.push(data); 
+            }
+            $scope.student={};
+        })
+        .error(function(data){
+            $scope.error = "An Error has occured while adding student!"; 
+            console.log(data);
+        });
     }
 
-    $scope.edit = function(student) {
-        $scope.student = student;
+    $scope.edit=function(student){
+        $scope.student.idPk = student.idPk;
+        $scope.student.id = student.id;
+        $scope.student.name = student.name;
+        $scope.student.surName = student.surName;
+        $scope.student.dateOfBirth = student.dateOfBirth;
+        $scope.student.phoneNumber = student.phoneNumber;
+        $scope.student.cellphoneNumber = student.cellphoneNumber;
+        $scope.student.emailAddress = student.emailAddress;
+        $scope.student.centerId = student.centerId;
+        $scope.student.centerName = student.centerName;
     }
 
-    $scope.cancel = function() {
-        $scope.student = {};
+    $scope.cancel=function(){
+        $scope.student={};
     }
+
     $scope.delete=function(student){
-        $http.post($scope.deleteURI,student.idPk)
+        
+        $http({
+                method: 'POST',
+                url: $scope.deleteURI,
+                data:student.idPk,
+                headers: {'Content-Type':'text/plain; charset=UTF-8'},
+        })
         .success(function(data){
             $.each($scope.studentList, function (i) {  
                 if ($scope.studentList[i].idPk === student.idPk) {  
@@ -89,4 +117,5 @@ admin.controller('StudentController', function($scope) {
             console.log(data);
         });
     }
+
 });
