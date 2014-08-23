@@ -10,6 +10,7 @@ public class TrainingSubjectId implements java.io.Serializable {
 
 	private Integer trainingIdFk;
 	private Integer subjectIdFk;
+	private String description;
 
 	// Constructors
 
@@ -21,6 +22,14 @@ public class TrainingSubjectId implements java.io.Serializable {
 	public TrainingSubjectId(Integer trainingIdFk, Integer subjectIdFk) {
 		this.trainingIdFk = trainingIdFk;
 		this.subjectIdFk = subjectIdFk;
+	}
+
+	/** full constructor */
+	public TrainingSubjectId(Integer trainingIdFk, Integer subjectIdFk,
+			String description) {
+		this.trainingIdFk = trainingIdFk;
+		this.subjectIdFk = subjectIdFk;
+		this.description = description;
 	}
 
 	// Property accessors
@@ -41,6 +50,13 @@ public class TrainingSubjectId implements java.io.Serializable {
 		this.subjectIdFk = subjectIdFk;
 	}
 
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public boolean equals(Object other) {
 		if ((this == other))
@@ -58,7 +74,11 @@ public class TrainingSubjectId implements java.io.Serializable {
 				&& ((this.getSubjectIdFk() == castOther.getSubjectIdFk()) || (this
 						.getSubjectIdFk() != null
 						&& castOther.getSubjectIdFk() != null && this
-						.getSubjectIdFk().equals(castOther.getSubjectIdFk())));
+						.getSubjectIdFk().equals(castOther.getSubjectIdFk())))
+				&& ((this.getDescription() == castOther.getDescription()) || (this
+						.getDescription() != null
+						&& castOther.getDescription() != null && this
+						.getDescription().equals(castOther.getDescription())));
 	}
 
 	public int hashCode() {
@@ -72,7 +92,10 @@ public class TrainingSubjectId implements java.io.Serializable {
 				* result
 				+ (getSubjectIdFk() == null ? 0 : this.getSubjectIdFk()
 						.hashCode());
-
+		result = 37
+				* result
+				+ (getDescription() == null ? 0 : this.getDescription()
+						.hashCode());
 		return result;
 	}
 

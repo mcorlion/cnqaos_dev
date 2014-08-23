@@ -66,11 +66,4 @@ public class CenterBDO {
         return centerDAO.findById(id);
     }
     
-    
-    public static void main(String[] args) {
-        CenterBDO centerBDO = new CenterBDO();
-        
-        System.out.println(centerBDO.getCenterList());
-    }
-    
 }

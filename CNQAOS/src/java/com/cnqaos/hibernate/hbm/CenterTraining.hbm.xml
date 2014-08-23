@@ -13,10 +13,10 @@
             <key-property name="trainingIdFk" type="java.lang.Integer">
                 <column name="training_id_fk" />
             </key-property>
+            <key-property name="description" type="java.lang.String">
+                <column name="description" length="200" />
+            </key-property>
         </composite-id>
-        <property name="description" type="java.lang.String">
-            <column name="description" length="200" />
-        </property>
         <many-to-one name="training" class="com.cnqaos.hibernate.pojo.Training" update="false" insert="false" fetch="select">
             <column name="training_id_fk" not-null="true" />
         </many-to-one>
