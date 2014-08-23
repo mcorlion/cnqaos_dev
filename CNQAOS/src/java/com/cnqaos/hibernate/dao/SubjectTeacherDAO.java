@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cnqaos.hibernate.pojo.SubjectTeacher;
-import com.cnqaos.hibernate.pojo.SubjectTeacherId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -50,7 +49,7 @@ public class SubjectTeacherDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public SubjectTeacher findById(com.cnqaos.hibernate.pojo.SubjectTeacherId id) {
+	public SubjectTeacher findById(java.lang.Integer id) {
 		log.debug("getting SubjectTeacher instance with id: " + id);
 		try {
 			SubjectTeacher instance = (SubjectTeacher) getSession().get(

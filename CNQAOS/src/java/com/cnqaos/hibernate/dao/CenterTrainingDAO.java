@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cnqaos.hibernate.pojo.CenterTraining;
-import com.cnqaos.hibernate.pojo.CenterTrainingId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -50,7 +49,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public CenterTraining findById(com.cnqaos.hibernate.pojo.CenterTrainingId id) {
+	public CenterTraining findById(java.lang.Integer id) {
 		log.debug("getting CenterTraining instance with id: " + id);
 		try {
 			CenterTraining instance = (CenterTraining) getSession().get(

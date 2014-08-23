@@ -1,21 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23 Aug, 2014 1:07:35 AM by Hibernate Tools 3.6.0 -->
+<!-- Generated 23 Aug, 2014 9:46:57 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.cnqaos.hibernate.pojo.StudentCenter" table="student_center" catalog="cnqaos_dev">
-        <composite-id name="id" class="com.cnqaos.hibernate.pojo.StudentCenterId">
-            <key-property name="studentIdFk" type="int">
-                <column name="student_id_fk" />
-            </key-property>
-            <key-property name="centerIdFk" type="int">
-                <column name="center_id_fk" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="userMaster" class="com.cnqaos.hibernate.pojo.UserMaster" update="false" insert="false" fetch="select">
+        <id name="stdCenterIdPk" type="java.lang.Integer">
+            <column name="std_center_id_pk" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userMaster" class="com.cnqaos.hibernate.pojo.UserMaster" fetch="select">
             <column name="student_id_fk" not-null="true" />
         </many-to-one>
-        <many-to-one name="center" class="com.cnqaos.hibernate.pojo.Center" update="false" insert="false" fetch="select">
+        <many-to-one name="center" class="com.cnqaos.hibernate.pojo.Center" fetch="select">
             <column name="center_id_fk" not-null="true" />
         </many-to-one>
     </class>

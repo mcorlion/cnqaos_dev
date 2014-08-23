@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 
@@ -9,25 +9,24 @@ package com.cnqaos.hibernate.pojo;
 public class CenterTraining  implements java.io.Serializable {
 
 
-     private CenterTrainingId id;
+     private Integer centreTrainingIdPk;
      private Training training;
      private Center center;
 
     public CenterTraining() {
     }
 
-    public CenterTraining(CenterTrainingId id, Training training, Center center) {
-       this.id = id;
+    public CenterTraining(Training training, Center center) {
        this.training = training;
        this.center = center;
     }
    
-    public CenterTrainingId getId() {
-        return this.id;
+    public Integer getCentreTrainingIdPk() {
+        return this.centreTrainingIdPk;
     }
     
-    public void setId(CenterTrainingId id) {
-        this.id = id;
+    public void setCentreTrainingIdPk(Integer centreTrainingIdPk) {
+        this.centreTrainingIdPk = centreTrainingIdPk;
     }
     public Training getTraining() {
         return this.training;
@@ -44,4 +43,9 @@ public class CenterTraining  implements java.io.Serializable {
         this.center = center;
     }
 
+
+
+
 }
+
+

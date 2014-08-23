@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 
@@ -9,25 +9,24 @@ package com.cnqaos.hibernate.pojo;
 public class StudentCenter  implements java.io.Serializable {
 
 
-     private StudentCenterId id;
+     private Integer stdCenterIdPk;
      private UserMaster userMaster;
      private Center center;
 
     public StudentCenter() {
     }
 
-    public StudentCenter(StudentCenterId id, UserMaster userMaster, Center center) {
-       this.id = id;
+    public StudentCenter(UserMaster userMaster, Center center) {
        this.userMaster = userMaster;
        this.center = center;
     }
    
-    public StudentCenterId getId() {
-        return this.id;
+    public Integer getStdCenterIdPk() {
+        return this.stdCenterIdPk;
     }
     
-    public void setId(StudentCenterId id) {
-        this.id = id;
+    public void setStdCenterIdPk(Integer stdCenterIdPk) {
+        this.stdCenterIdPk = stdCenterIdPk;
     }
     public UserMaster getUserMaster() {
         return this.userMaster;

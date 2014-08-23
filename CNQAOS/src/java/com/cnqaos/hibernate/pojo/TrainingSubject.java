@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 
@@ -9,25 +9,24 @@ package com.cnqaos.hibernate.pojo;
 public class TrainingSubject  implements java.io.Serializable {
 
 
-     private TrainingSubjectId id;
+     private Integer trainingSubjectIdPk;
      private Subject subject;
      private Training training;
 
     public TrainingSubject() {
     }
 
-    public TrainingSubject(TrainingSubjectId id, Subject subject, Training training) {
-       this.id = id;
+    public TrainingSubject(Subject subject, Training training) {
        this.subject = subject;
        this.training = training;
     }
    
-    public TrainingSubjectId getId() {
-        return this.id;
+    public Integer getTrainingSubjectIdPk() {
+        return this.trainingSubjectIdPk;
     }
     
-    public void setId(TrainingSubjectId id) {
-        this.id = id;
+    public void setTrainingSubjectIdPk(Integer trainingSubjectIdPk) {
+        this.trainingSubjectIdPk = trainingSubjectIdPk;
     }
     public Subject getSubject() {
         return this.subject;

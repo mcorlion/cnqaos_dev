@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 
@@ -9,25 +9,24 @@ package com.cnqaos.hibernate.pojo;
 public class UserRole  implements java.io.Serializable {
 
 
-     private UserRoleId id;
+     private Integer userRoleIdPk;
      private UserMaster userMaster;
      private Role role;
 
     public UserRole() {
     }
 
-    public UserRole(UserRoleId id, UserMaster userMaster, Role role) {
-       this.id = id;
+    public UserRole(UserMaster userMaster, Role role) {
        this.userMaster = userMaster;
        this.role = role;
     }
    
-    public UserRoleId getId() {
-        return this.id;
+    public Integer getUserRoleIdPk() {
+        return this.userRoleIdPk;
     }
     
-    public void setId(UserRoleId id) {
-        this.id = id;
+    public void setUserRoleIdPk(Integer userRoleIdPk) {
+        this.userRoleIdPk = userRoleIdPk;
     }
     public UserMaster getUserMaster() {
         return this.userMaster;

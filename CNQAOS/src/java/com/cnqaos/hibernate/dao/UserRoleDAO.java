@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cnqaos.hibernate.pojo.UserRole;
-import com.cnqaos.hibernate.pojo.UserRoleId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -50,7 +49,7 @@ public class UserRoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public UserRole findById(com.cnqaos.hibernate.pojo.UserRoleId id) {
+	public UserRole findById(java.lang.Integer id) {
 		log.debug("getting UserRole instance with id: " + id);
 		try {
 			UserRole instance = (UserRole) getSession().get(

@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cnqaos.hibernate.pojo.StudentCenter;
-import com.cnqaos.hibernate.pojo.StudentCenterId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -50,7 +49,7 @@ public class StudentCenterDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public StudentCenter findById(com.cnqaos.hibernate.pojo.StudentCenterId id) {
+	public StudentCenter findById(java.lang.Integer id) {
 		log.debug("getting StudentCenter instance with id: " + id);
 		try {
 			StudentCenter instance = (StudentCenter) getSession().get(

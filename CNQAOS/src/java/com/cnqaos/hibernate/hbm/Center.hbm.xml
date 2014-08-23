@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23 Aug, 2014 1:07:35 AM by Hibernate Tools 3.6.0 -->
+<!-- Generated 23 Aug, 2014 9:46:57 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.cnqaos.hibernate.pojo.Center" table="center" catalog="cnqaos_dev">
         <id name="centerIdPk" type="java.lang.Integer">
@@ -11,11 +11,11 @@
         <property name="centerName" type="string">
             <column name="center_name" length="100" not-null="true" />
         </property>
-        <property name="centerAddress" type="string">
-            <column name="center_address" length="200" not-null="true" />
+        <property name="addressLine1" type="string">
+            <column name="address_line_1" length="200" not-null="true" />
         </property>
-        <property name="street" type="string">
-            <column name="street" length="100" not-null="true" />
+        <property name="addressLine2" type="string">
+            <column name="address_line_2" length="100" />
         </property>
         <property name="city" type="string">
             <column name="city" length="100" not-null="true" />

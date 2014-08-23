@@ -61,8 +61,8 @@ public class CenterREST {
     public Response createCenter(
         @DefaultValue("0")    @FormParam ("id") int id,
             @FormParam ("centerName") String centerName,
-            @FormParam ("centerAddress") String centerAddress,
-            @FormParam ("street") String street,
+            @FormParam ("addressLine1") String addressLine1,
+            @FormParam ("addressLine2") String addressLine2,
             @FormParam ("city") String city,
             @FormParam ("pin") String pin,
         @DefaultValue("NA")    @FormParam ("description") String description,
@@ -85,8 +85,8 @@ public class CenterREST {
             if(id == 0){
                 center  = new Center();
                 center.setCenterName(centerName);
-                center.setCenterAddress(centerAddress);
-                center.setStreet(street);
+                center.setAddressLine1(addressLine1);
+                center.setAddressLine2(addressLine2);
                 center.setCity(city);
                 center.setPin(pin);
                 center.setDescription(description);
@@ -97,8 +97,8 @@ public class CenterREST {
             }else{
                 center = centerBDO.findCenter(id);
                 center.setCenterName(centerName);
-                center.setCenterAddress(centerAddress);
-                center.setStreet(street);
+                center.setAddressLine1(addressLine1);
+                center.setAddressLine2(addressLine2);
                 center.setCity(city);
                 center.setPin(pin);
                 center.setDescription(description);

@@ -68,8 +68,8 @@ admin.controller('CenterController', function($scope,$http) {
         $scope.edit=function(center){
             $scope.center.id=center.id;
             $scope.center.centerName= center.centerName;
-            $scope.center.centerAddress = center.centerAddress;
-            $scope.center.street = center.street;
+            $scope.center.addressLine1 = center.addressLine1;
+            $scope.center.addressLine2 = center.addressLine2;
             $scope.center.city=center.city;
             $scope.center.pin = center.pin;
             $scope.center.description = center.description;

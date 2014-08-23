@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 public class Newsletter  implements java.io.Serializable {
 
 
-     private Integer newsletterId;
+     private Integer newsletterIdPk;
      private String filename;
      private byte[] file;
      private Date uploadDate;
@@ -35,12 +35,12 @@ public class Newsletter  implements java.io.Serializable {
        this.issue = issue;
     }
    
-    public Integer getNewsletterId() {
-        return this.newsletterId;
+    public Integer getNewsletterIdPk() {
+        return this.newsletterIdPk;
     }
     
-    public void setNewsletterId(Integer newsletterId) {
-        this.newsletterId = newsletterId;
+    public void setNewsletterIdPk(Integer newsletterIdPk) {
+        this.newsletterIdPk = newsletterIdPk;
     }
     public String getFilename() {
         return this.filename;

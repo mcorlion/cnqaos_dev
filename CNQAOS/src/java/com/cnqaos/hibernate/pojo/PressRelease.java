@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 public class PressRelease  implements java.io.Serializable {
 
 
-     private Integer pressreleaseId;
+     private Integer pressreleaseIdPk;
      private String filename;
      private byte[] file;
      private Date uploadDate;
@@ -35,12 +35,12 @@ public class PressRelease  implements java.io.Serializable {
        this.releaseDate = releaseDate;
     }
    
-    public Integer getPressreleaseId() {
-        return this.pressreleaseId;
+    public Integer getPressreleaseIdPk() {
+        return this.pressreleaseIdPk;
     }
     
-    public void setPressreleaseId(Integer pressreleaseId) {
-        this.pressreleaseId = pressreleaseId;
+    public void setPressreleaseIdPk(Integer pressreleaseIdPk) {
+        this.pressreleaseIdPk = pressreleaseIdPk;
     }
     public String getFilename() {
         return this.filename;

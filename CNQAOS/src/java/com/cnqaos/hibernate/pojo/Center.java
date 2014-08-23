@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -16,8 +16,8 @@ public class Center  implements java.io.Serializable {
 
      private Integer centerIdPk;
      private String centerName;
-     private String centerAddress;
-     private String street;
+     private String addressLine1;
+     private String addressLine2;
      private String city;
      private String pin;
      private String description;
@@ -30,18 +30,17 @@ public class Center  implements java.io.Serializable {
     }
 
 	
-    public Center(String centerName, String centerAddress, String street, String city, double latitude, double longitude) {
+    public Center(String centerName, String addressLine1, String city, double latitude, double longitude) {
         this.centerName = centerName;
-        this.centerAddress = centerAddress;
-        this.street = street;
+        this.addressLine1 = addressLine1;
         this.city = city;
         this.latitude = latitude;
         this.longitude = longitude;
     }
-    public Center(String centerName, String centerAddress, String street, String city, String pin, String description, double latitude, double longitude, Set studentCenters, Set centerTrainings) {
+    public Center(String centerName, String addressLine1, String addressLine2, String city, String pin, String description, double latitude, double longitude, Set studentCenters, Set centerTrainings) {
        this.centerName = centerName;
-       this.centerAddress = centerAddress;
-       this.street = street;
+       this.addressLine1 = addressLine1;
+       this.addressLine2 = addressLine2;
        this.city = city;
        this.pin = pin;
        this.description = description;
@@ -65,19 +64,19 @@ public class Center  implements java.io.Serializable {
     public void setCenterName(String centerName) {
         this.centerName = centerName;
     }
-    public String getCenterAddress() {
-        return this.centerAddress;
+    public String getAddressLine1() {
+        return this.addressLine1;
     }
     
-    public void setCenterAddress(String centerAddress) {
-        this.centerAddress = centerAddress;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
-    public String getStreet() {
-        return this.street;
+    public String getAddressLine2() {
+        return this.addressLine2;
     }
     
-    public void setStreet(String street) {
-        this.street = street;
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
     public String getCity() {
         return this.city;
@@ -134,8 +133,8 @@ public class Center  implements java.io.Serializable {
         JsonObjectBuilder builder = Json.createObjectBuilder();
         builder.add("id",centerIdPk)
                 .add("centerName", centerName)
-                .add("centerAddress", centerAddress)
-                .add("street",street)
+                .add("addressLine1", addressLine1)
+                .add("addressLine2",addressLine2)
                 .add("city", city)
                 .add("pin", pin)
                 .add("description", description)
@@ -148,8 +147,8 @@ public class Center  implements java.io.Serializable {
         JsonObjectBuilder builder = Json.createObjectBuilder();
         builder.add("id",centerIdPk)
                 .add("centerName", centerName)
-                .add("centerAddress", centerAddress)
-                .add("street",street)
+                .add("addressLine1", addressLine1)
+                .add("addressLine2",addressLine2)
                 .add("city", city)
                 .add("pin", pin)
                 .add("description", description)
@@ -157,4 +156,8 @@ public class Center  implements java.io.Serializable {
                 .add("longitude",longitude);
         return builder.build();
     }
+
+
 }
+
+

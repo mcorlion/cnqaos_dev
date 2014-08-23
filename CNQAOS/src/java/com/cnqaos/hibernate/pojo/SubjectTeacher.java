@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 
@@ -9,25 +9,24 @@ package com.cnqaos.hibernate.pojo;
 public class SubjectTeacher  implements java.io.Serializable {
 
 
-     private SubjectTeacherId id;
+     private Integer subjectTeacherIdPk;
      private Subject subject;
      private UserMaster userMaster;
 
     public SubjectTeacher() {
     }
 
-    public SubjectTeacher(SubjectTeacherId id, Subject subject, UserMaster userMaster) {
-       this.id = id;
+    public SubjectTeacher(Subject subject, UserMaster userMaster) {
        this.subject = subject;
        this.userMaster = userMaster;
     }
    
-    public SubjectTeacherId getId() {
-        return this.id;
+    public Integer getSubjectTeacherIdPk() {
+        return this.subjectTeacherIdPk;
     }
     
-    public void setId(SubjectTeacherId id) {
-        this.id = id;
+    public void setSubjectTeacherIdPk(Integer subjectTeacherIdPk) {
+        this.subjectTeacherIdPk = subjectTeacherIdPk;
     }
     public Subject getSubject() {
         return this.subject;

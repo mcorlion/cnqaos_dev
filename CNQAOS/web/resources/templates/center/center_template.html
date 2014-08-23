@@ -3,8 +3,8 @@
         <tr>  
             <th>#</th>  
             <td>Name</td>  
-            <th>Address</th>  
-            <th>Street</th>  
+            <th>Address Line 1</th>  
+            <th>Address Line 2</th>  
             <th>City</th>  
             <th>PIN</th>  
             <th>Description</th>  
@@ -15,8 +15,8 @@
         <tr data-ng-repeat="center in centerList">
             <td>{{$index+1 }}</td>
             <td>{{center.centerName}}</td>
-            <td>{{center.centerAddress}}</td>
-            <td>{{center.street}}</td>
+            <td>{{center.addressLine1}}</td>
+            <td>{{center.addressLine2}}</td>
             <td>{{center.city}}</td>
             <td>{{center.pin}}</td>
             <td>{{center.description}}</td>
@@ -38,21 +38,21 @@
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="centerAddress">Address</label>
-                <input type="text" data-ng-model="center.centerAddress" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerAddress" placeholder="Enter Center Address">            
+                <label for="addressLine1">Address Line 1</label>
+                <input type="text" data-ng-model="center.addressLine1" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="addressLine1" placeholder="Enter Center Address 1">            
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="centerStreet">Street</label>
-                <input type="text" data-ng-model="center.street" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="centerStreet" placeholder="Enter Center Street">
+                <label for="addressLine2">Address Line 2</label>
+                <input type="text" data-ng-model="center.addressLine2" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="addressLine2" placeholder="Enter Center Address 2">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="pin">City</label>
+                <label for="city">City</label>
                 <input type="text" data-ng-model="center.city" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="city" placeholder="Enter City Name">            
                 </div>
             </div>

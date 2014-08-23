@@ -1,5 +1,5 @@
 package com.cnqaos.hibernate.pojo;
-// Generated 23 Aug, 2014 1:07:34 AM by Hibernate Tools 3.6.0
+// Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 
 
@@ -9,25 +9,24 @@ package com.cnqaos.hibernate.pojo;
 public class EmployerStudent  implements java.io.Serializable {
 
 
-     private EmployerStudentId id;
+     private Integer empStdIdPk;
      private UserMaster userMasterByStudentIdFk;
      private UserMaster userMasterByEmployerIdFk;
 
     public EmployerStudent() {
     }
 
-    public EmployerStudent(EmployerStudentId id, UserMaster userMasterByStudentIdFk, UserMaster userMasterByEmployerIdFk) {
-       this.id = id;
+    public EmployerStudent(UserMaster userMasterByStudentIdFk, UserMaster userMasterByEmployerIdFk) {
        this.userMasterByStudentIdFk = userMasterByStudentIdFk;
        this.userMasterByEmployerIdFk = userMasterByEmployerIdFk;
     }
    
-    public EmployerStudentId getId() {
-        return this.id;
+    public Integer getEmpStdIdPk() {
+        return this.empStdIdPk;
     }
     
-    public void setId(EmployerStudentId id) {
-        this.id = id;
+    public void setEmpStdIdPk(Integer empStdIdPk) {
+        this.empStdIdPk = empStdIdPk;
     }
     public UserMaster getUserMasterByStudentIdFk() {
         return this.userMasterByStudentIdFk;
