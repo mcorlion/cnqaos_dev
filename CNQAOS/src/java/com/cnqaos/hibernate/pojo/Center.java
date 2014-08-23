@@ -156,8 +156,6 @@ public class Center  implements java.io.Serializable {
                 .add("longitude",longitude);
         return builder.build();
     }
-
-
 }
 
 

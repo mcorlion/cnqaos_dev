@@ -173,4 +173,8 @@ public class UserMasterDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+        
+        public List findAllStudents(){
+            return null;
+        }
 }

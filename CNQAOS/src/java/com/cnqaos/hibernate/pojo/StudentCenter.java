@@ -42,10 +42,6 @@ public class StudentCenter  implements java.io.Serializable {
     public void setCenter(Center center) {
         this.center = center;
     }
-
-
-
-
 }
 
 
