@@ -1,7 +1,7 @@
 <div>
     <table class="table">
         <tr>  
-<!--            <th>#</th>  -->
+            <th>#</th>  
             <td>Name</td>  
             <th>Address</th>  
             <th>Street</th>  
@@ -13,7 +13,7 @@
             <th>          </th>  
         </tr>
         <tr data-ng-repeat="center in centerList">
-<!--            <td>{{ }}</td>-->
+            <td>{{$index+1 }}</td>
             <td>{{center.centerName}}</td>
             <td>{{center.centerAddress}}</td>
             <td>{{center.street}}</td>
@@ -28,7 +28,7 @@
 </div>
     <div>
         <form role="form">
-
+            <input type="hidden" data-ng-model="id" />
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                     <label for="centerName">Center Name</label>
@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                 <label for="latitude">Latitude</label>
-                <input type="text" data-ng-model="center.latitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="latitude" placeholder="Enter Center Latitude from Google Map">
+                <input type="number" data-ng-model="center.latitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="latitude" placeholder="Enter Center Latitude from Google Map">
             
                 </div>
             </div>
@@ -83,12 +83,13 @@
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                 <label for="longitude">Longitude</label>
-                <input type="text" data-ng-model="center.longitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="longitude" placeholder="Enter Center Longitude from Google Map">
+                <input type="number" data-ng-model="center.longitude" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="longitude" placeholder="Enter Center Longitude from Google Map">
             
                 </div>
             </div>
             
              <button data-ng-click="create()" class="btn btn-default">Submit</button>
-            <button data-ng-click="cancel()" class="btn btn-default">Cancel</button>
+             <input type="reset" value="Cancel" class="btn btn-default" />
+
         </form>
     </div>

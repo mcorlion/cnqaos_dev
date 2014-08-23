@@ -47,7 +47,16 @@ admin.controller('CenterController', function($scope,$http) {
                     transformRequest: transform
             })
             .success(function(data){
-                $scope.centerList.push($scope.center); 
+                var isEditCenter = false;
+                $.each($scope.centerList, function (i) {  
+                    if ($scope.centerList[i].id === data.id) {  
+                         $scope.centerList[i] = data;
+                         isEditCenter  = true;
+                    }
+                });
+                if(!isEditCenter){
+                    $scope.centerList.push(data); 
+                }
                 $scope.center={};
             })
             .error(function(data){
@@ -57,15 +66,32 @@ admin.controller('CenterController', function($scope,$http) {
         }
 
         $scope.edit=function(center){
-            $scope.center = center;
+            $scope.center.id=center.id;
+            $scope.center.centerName= center.centerName;
+            $scope.center.centerAddress = center.centerAddress;
+            $scope.center.street = center.street;
+            $scope.center.city=center.city;
+            $scope.center.pin = center.pin;
+            $scope.center.description = center.description;
+            $scope.center.latitude = center.latitude;
+            $scope.center.longitude = center.longitude;
         }
+        
+        $scope.assignValue=
+        
         
         $scope.cancel=function(){
             $scope.center={};
         }
 
         $scope.delete=function(center){
-            $http.post($scope.deleteURI,center.id)
+            
+            $http({
+                    method: 'POST',
+                    url: $scope.deleteURI,
+                    data:center.id,
+                    headers: {'Content-Type':'text/plain; charset=UTF-8'},
+            })
             .success(function(data){
                 $.each($scope.centerList, function (i) {  
                     if ($scope.centerList[i].id === center.id) {  

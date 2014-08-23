@@ -9,13 +9,13 @@ import com.cnqaos.bdo.center.CenterBDO;
 import com.cnqaos.hibernate.pojo.Center;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -58,7 +58,7 @@ public class CenterREST {
     @Path("/add")
     @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.APPLICATION_JSON)
-    public String createCenter(
+    public Response createCenter(
         @DefaultValue("0")    @FormParam ("id") int id,
             @FormParam ("centerName") String centerName,
             @FormParam ("centerAddress") String centerAddress,
@@ -68,58 +68,67 @@ public class CenterREST {
         @DefaultValue("NA")    @FormParam ("description") String description,
             @FormParam ("latitude") double latitude,
             @FormParam ("longitude") double longitude) {
-        System.out.println("...................................");
-        System.out.println(" id "+ id);
-        System.out.println(" name"+ centerName);
-        System.out.println(" address "+ centerAddress);
-        System.out.println(" street "+ street);
-        System.out.println(" city "+ city);         
-        System.out.println(" pin "+ pin);         
-        System.out.println(" description "+ description);   
-        System.out.println(" latitude "+ latitude);        
-        System.out.println(" longitude "+ longitude);        
-        System.out.println("...................................");
-        
-        Center center  = new Center();
-        //center.setCenterIdPk(id);
-        
-        center.setCenterName(centerName);
-        center.setCenterAddress(centerAddress);
-        center.setStreet(street);
-        center.setCity(city);
-        center.setPin(pin);
-        center.setDescription(description);
-        center.setLatitude(latitude);
-        center.setLongitude(longitude);
+//        System.out.println("...................................");
+//        System.out.println(" id "+ id);
+//        System.out.println(" name"+ centerName);
+//        System.out.println(" address "+ centerAddress);
+//        System.out.println(" street "+ street);
+//        System.out.println(" city "+ city);         
+//        System.out.println(" pin "+ pin);         
+//        System.out.println(" description "+ description);   
+//        System.out.println(" latitude "+ latitude);        
+//        System.out.println(" longitude "+ longitude);        
+//        System.out.println("...................................");
+        Center center  = null;
         CenterBDO centerBDO = new CenterBDO();
         try{
-            if(center.getCenterIdPk() == null){
+            if(id == 0){
+                center  = new Center();
+                center.setCenterName(centerName);
+                center.setCenterAddress(centerAddress);
+                center.setStreet(street);
+                center.setCity(city);
+                center.setPin(pin);
+                center.setDescription(description);
+                center.setLatitude(latitude);
+                center.setLongitude(longitude);
+                
                 centerBDO.create(center);
             }else{
+                center = centerBDO.findCenter(id);
+                center.setCenterName(centerName);
+                center.setCenterAddress(centerAddress);
+                center.setStreet(street);
+                center.setCity(city);
+                center.setPin(pin);
+                center.setDescription(description);
+                center.setLatitude(latitude);
+                center.setLongitude(longitude);
+
                 centerBDO.edit(center);
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return Response.status(500).toString();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         
-        return Response.status(200).toString();
+        return Response.ok(center.getJSONObject().toString(), MediaType.APPLICATION_JSON).build();
     }
     
     @POST
     @Path("/delete")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteCenter(@QueryParam("id") int id) {
+    @Consumes("text/plain")
+    public Response deleteCenter(String id) {
         CenterBDO centerBDO = new CenterBDO();
         System.out.println(" remove id "+id);
         try{
-            centerBDO.remove(id);
+            centerBDO.remove(Integer.parseInt(id));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return Response.status(500).build();
+           return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         
-        return Response.status(200).build();
+        return Response.ok().build();
     }
     
     @GET
@@ -127,14 +136,17 @@ public class CenterREST {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCenter(@QueryParam("id") int id) {
         CenterBDO centerBDO = new CenterBDO();
+        Center center = null;
+        JsonObject centerJson = null;
         try{
-            centerBDO.remove(id);
+            center = centerBDO.findCenter(id);
+            centerJson = center.getJSONObject();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return Response.status(500).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         
-        return Response.status(200).build();
+         return Response.ok(centerJson.toString(), MediaType.APPLICATION_JSON).build();
     }
 
     @GET
