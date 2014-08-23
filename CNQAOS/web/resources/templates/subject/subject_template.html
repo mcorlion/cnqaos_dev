@@ -1,5 +1,29 @@
-	<div class="jumbotron text-center">
-		<h1>Subject Page</h1>
+<div>
+    <table class="table">
+        <tr>  
+            <th>#</th>  
+            <td>Name</td>  
+            <th>          </th>  
+        </tr>
+        <tr data-ng-repeat="subject in subjectList">
+            <td>{{$index+1 }}</td>
+            <td>{{subject.subjectName}}</td>
+            <td><p><a data-ng-click="edit(subject)" href="javascript:;">Edit</a> | <a data-ng-click="delete(subject)" href="javascript:;">Delete</a></p></td>
+        </tr>
+    </table>
+</div>
+    <div>
+        <form role="form" name="subjectForm" novalidate>
+            <input type="hidden" data-ng-model="id" />
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="subjectName">Subject Name</label>
+                    <input type="text" name="subjectName" data-ng-model="subject.subjectName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="subjectName" placeholder="Enter Subject Name">
+                </div>
+            </div>
+                      
+             <button data-ng-click="create()" class="btn btn-default">Submit</button>
+             <input type="reset" value="Cancel" class="btn btn-default" />
 
-		<p>{{ message }}</p>
-	</div>
+        </form>
+    </div>

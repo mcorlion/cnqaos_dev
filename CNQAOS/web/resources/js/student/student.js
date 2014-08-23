@@ -18,7 +18,7 @@
 
 
 // create the controller and inject Angular's $scope
-admin.controller('StudentController', function($scope) {
+admin.controller('StudentController', function($scope,$http) {
     // create a message to display in our view
     $scope.message = 'Student Controller';
     $scope.student = {};
@@ -34,6 +34,7 @@ admin.controller('StudentController', function($scope) {
     $http.get($scope.centerListURI)
             .success(function(data) {
                 $scope.centerList = data;
+                console.log("center data..."+data);
             })
             .error(function(data) {
                 $scope.error = "An Error has occured while loading centers!";

@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                     <label for="studentID">ID</label>
-                    <input type="text" data-ng-model="student.id" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="studentID" placeholder="Enter Student Name">
+                    <input type="text" data-ng-model="student.id" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="studentID" placeholder="Enter Student ID">
                 </div>
             </div>
             
@@ -81,8 +81,7 @@
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                 <label for="center">Center</label>
-                <input type="text" data-ng-model="student.centerId" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="center" placeholder="Select Center">
-                <select data-ng-model="student.centerId" class="form-control" ng-options="center.id as center.name for center in centerList">
+                <select data-ng-model="student.centerId" class="form-control" ng-options="center.id as center.centerName for center in centerList">
                     <option value="">-- Select Center --</option>
                 </select>
                 </div>

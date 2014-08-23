@@ -18,7 +18,7 @@
 
 
 // create the controller and inject Angular's $scope
-admin.controller('TeacherController', function($scope) {
+admin.controller('TeacherController', function($scope,$http) {
     // create a message to display in our view
     $scope.message = 'Teacher Controller';
     $scope.teacher = {};

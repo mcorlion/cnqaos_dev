@@ -46,6 +46,7 @@ public class StudentREST {
         JsonArrayBuilder studentList = Json.createArrayBuilder();
         try{
             for(UserMaster  student : studentBDO.getStudentList()){
+                System.out.println(" data "+student.getJSONObjectForStudent());
                 studentList.add(student.getJSONObjectForStudent());
             }
         }catch(Exception ex){
