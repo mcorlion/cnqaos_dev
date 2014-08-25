@@ -26,8 +26,8 @@ admin.controller('TeacherController', function($scope,$http) {
     $scope.subjectList = [];
     $scope.listURI = "/CNQAOS/rest/teacher/list";
     $scope.subjectListURI = "/CNQAOS/rest/subject/list";
-    $scope.addURI = "/CNQAOS/rest/student/add";
-    $scope.deleteURI = "/CNQAOS/rest/student/delete";
+    $scope.addURI = "/CNQAOS/rest/teacher/add";
+    $scope.deleteURI = "/CNQAOS/rest/teacher/delete";
 
     // methods for teacher
     // Get the subject list 

@@ -68,17 +68,7 @@ public class CenterREST {
         @DefaultValue("NA")    @FormParam ("description") String description,
             @FormParam ("latitude") double latitude,
             @FormParam ("longitude") double longitude) {
-//        System.out.println("...................................");
-//        System.out.println(" id "+ id);
-//        System.out.println(" name"+ centerName);
-//        System.out.println(" address "+ centerAddress);
-//        System.out.println(" street "+ street);
-//        System.out.println(" city "+ city);         
-//        System.out.println(" pin "+ pin);         
-//        System.out.println(" description "+ description);   
-//        System.out.println(" latitude "+ latitude);        
-//        System.out.println(" longitude "+ longitude);        
-//        System.out.println("...................................");
+        
         Center center  = null;
         CenterBDO centerBDO = new CenterBDO();
         try{
@@ -110,8 +100,7 @@ public class CenterREST {
         }catch(Exception ex){
             System.out.println(ex.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-        }
-        
+        }        
         return Response.ok(center.getJSONObject().toString(), MediaType.APPLICATION_JSON).build();
     }
     

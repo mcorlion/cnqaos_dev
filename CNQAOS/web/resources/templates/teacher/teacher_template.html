@@ -9,10 +9,10 @@
             <th>Landline</th>  
             <th>Mobile</th> 
             <th>Email</th> 
-            <th>Center</th>  
+            <th>Subject</th>  
             <th>          </th>  
         </tr>
-        <tr data-ng-repeat=" in teacherList">
+        <tr data-ng-repeat="teacher in teacherList">
             <td>{{$index+1 }}</td>
             <td>{{teacher.id}}</td>
             <td>{{teacher.name}}</td>
@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                 <label for="subject">Subject</label>
-                <select name="subject"  data-ng-model="teacher.subjectId" class="form-control" ng-options="subject.id as subject.name for subject in subjectList">
+                <select name="subject"  data-ng-model="teacher.subjectId" class="form-control" ng-options="subject.id as subject.subjectName for subject in subjectList">
                     <option value="">-- Select Subject --</option>
                 </select>
                 </div>

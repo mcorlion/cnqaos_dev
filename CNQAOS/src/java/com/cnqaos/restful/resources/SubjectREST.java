@@ -36,7 +36,7 @@ public class SubjectREST {
         SubjectBDO subjectBDO = new SubjectBDO();
         JsonArrayBuilder subjectList = Json.createArrayBuilder();
         try{
-            for(Subject subject : subjectBDO.getCenterList()){
+            for(Subject subject : subjectBDO.getSubjectList()){
                      subjectList.add(subject.getJSONObject());
             }
 
@@ -97,7 +97,7 @@ public class SubjectREST {
         Subject subject = null;
         JsonObject centerJson = null;
         try{
-            subject = subjectBDO.findCenter(id);
+            subject = subjectBDO.findSubject(id);
             centerJson = subject.getJSONObject();
         }catch(Exception ex){
             System.out.println(ex.getMessage());

@@ -69,7 +69,7 @@ admin.controller('StudentController', function($scope,$http) {
                      isEditStudent  = true;
                 }
             });
-            if(!isEditCenter){
+            if(!isEditStudent){
                 $scope.studentList.push(data); 
             }
             $scope.student={};

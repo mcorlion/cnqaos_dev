@@ -6,10 +6,10 @@
 
 package com.cnqaos.restful.resources;
 
-import com.cnqaos.bdo.student.StudentBDO;
-import com.cnqaos.hibernate.pojo.Center;
+import com.cnqaos.bdo.teacher.TeacherBDO;
 import com.cnqaos.hibernate.pojo.Role;
-import com.cnqaos.hibernate.pojo.StudentCenter;
+import com.cnqaos.hibernate.pojo.Subject;
+import com.cnqaos.hibernate.pojo.SubjectTeacher;
 import com.cnqaos.hibernate.pojo.UserMaster;
 import com.cnqaos.hibernate.pojo.UserRole;
 import com.cnqaos.hibernate.util.HibernateSessionFactory;
@@ -35,32 +35,32 @@ import javax.ws.rs.core.Response;
  *
  * @author Vimal
  */
-@Path("/student")
-public class StudentREST {
+@Path("/teacher")
+public class TeacherREST {
     
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getStudentList() {
-        StudentBDO studentBDO = new StudentBDO();
-        JsonArrayBuilder studentList = Json.createArrayBuilder();
+    public String getTeacherList() {
+        TeacherBDO teacherBDO = new TeacherBDO();
+        JsonArrayBuilder teacherList = Json.createArrayBuilder();
         try{
-            for(UserMaster  student : studentBDO.getStudentList()){
-                System.out.println(" data "+student.getJSONObjectForStudent());
-                studentList.add(student.getJSONObjectForStudent());
+            for(UserMaster  teacher : teacherBDO.getTeacherList()){
+                System.out.println(" data "+teacher.getJSONObjectForTeacher());
+                teacherList.add(teacher.getJSONObjectForTeacher());
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
             return Response.status(500).toString();
         }
-        return studentList.build().toString();
+        return teacherList.build().toString();
     }
     
   @POST
     @Path("/add")
     @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createStudent(
+    public Response createTeacher(
         @DefaultValue("0")    @FormParam ("idPk") int idPk,
             @FormParam ("id") String id,
             @FormParam ("name") String name,
@@ -69,15 +69,15 @@ public class StudentREST {
         @DefaultValue("NA")    @FormParam ("phoneNumber") String phoneNumber,
         @DefaultValue("NA")    @FormParam ("cellphoneNumber") String cellphoneNumber,
         @DefaultValue("NA")    @FormParam ("emailAddress") String emailAddress,
-            @FormParam ("centerId") int centerId) {
+            @FormParam ("subjectId") int subjectId) {
 
         UserMaster userMaster  = null;
         UserRole userRole = null;
-        StudentCenter studentCenter = null;
-        StudentBDO studentBDO = new StudentBDO();
+        SubjectTeacher subjectTeacher = null;
+        TeacherBDO teacherBDO = new TeacherBDO();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");  
-        Role role = (Role) HibernateSessionFactory.getSession().get(Role.class, CnqaosConstant.STUDENT_ROLE_ID);
-        Center center = (Center) HibernateSessionFactory.getSession().get(Center.class, centerId);
+        Role role = (Role) HibernateSessionFactory.getSession().get(Role.class, CnqaosConstant.TEACHER_ROLE_ID);
+        Subject subject = (Subject) HibernateSessionFactory.getSession().get(Subject.class, subjectId);
         try{
             Date birthDate = df.parse(dateOfBirth);
             if(idPk == 0){
@@ -92,11 +92,11 @@ public class StudentREST {
                 userMaster.setPassword("changemenow");
                 
                 userRole = new UserRole(userMaster, role);
-                studentCenter = new StudentCenter(userMaster, center);
+                subjectTeacher = new SubjectTeacher(subject, userMaster);
                                
-                studentBDO.create(userMaster, userRole, studentCenter);
+                teacherBDO.create(userMaster, userRole, subjectTeacher);
             }else{
-                userMaster = studentBDO.findStudent(idPk);
+                userMaster = teacherBDO.findTeacher(idPk);
                 userMaster.setId(id);
                 userMaster.setName(name);
                 userMaster.setSurName(surName);
@@ -105,22 +105,22 @@ public class StudentREST {
                 userMaster.setCellphoneNumber(cellphoneNumber);
                 userMaster.setEmailAddress(emailAddress);
                 
-                studentBDO.edit(userMaster, center);
+                teacherBDO.edit(userMaster, subject);
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
-        return Response.ok(userMaster.getJSONObjectForStudent().toString(), MediaType.APPLICATION_JSON).build();
+        return Response.ok(userMaster.getJSONObjectForTeacher().toString(), MediaType.APPLICATION_JSON).build();
     }
     
     @POST
     @Path("/delete")
     @Consumes("text/plain")
-    public Response deleteStudent(String id) {
-        StudentBDO studentBDO = new StudentBDO();
+    public Response deleteTeacher(String id) {
+        TeacherBDO teacherBDO = new TeacherBDO();
         try{
-            studentBDO.remove(Integer.parseInt(id));
+            teacherBDO.remove(Integer.parseInt(id));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -132,24 +132,24 @@ public class StudentREST {
     @GET
     @Path("/id")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getStudent(@QueryParam("id") int id) {
-        StudentBDO studentBDO = new StudentBDO();
-        UserMaster student = null;
-        JsonObject studentJson = null;
+    public Response getTeacher(@QueryParam("id") int id) {
+        TeacherBDO teacherBDO = new TeacherBDO();
+        UserMaster teacher = null;
+        JsonObject teacherJson = null;
         try{
-            student = studentBDO.findStudent(id);
-            studentJson = student.getJSONObjectForStudent();
+            teacher = teacherBDO.findTeacher(id);
+            teacherJson = teacher.getJSONObjectForTeacher();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         
-         return Response.ok(studentJson.toString(), MediaType.APPLICATION_JSON).build();
+         return Response.ok(teacherJson.toString(), MediaType.APPLICATION_JSON).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String test() {
-        return "Center";
+        return "Teacher";
     }
 }

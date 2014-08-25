@@ -1,5 +1,6 @@
 package com.cnqaos.hibernate.dao;
 
+import com.cnqaos.hibernate.pojo.Center;
 import java.util.List;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
@@ -7,6 +8,8 @@ import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.cnqaos.hibernate.pojo.StudentCenter;
+import com.cnqaos.hibernate.pojo.UserMaster;
+import com.cnqaos.hibernate.util.HibernateSessionFactory;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -132,6 +135,30 @@ public class StudentCenterDAO extends BaseHibernateDAO {
             log.debug("attach successful");
         } catch (RuntimeException re) {
             log.error("attach failed", re);
+            throw re;
+        }
+    }
+    
+    public StudentCenter findByStudentCenter(UserMaster student, Center center){
+        log.debug("getting StudentCenter instance with student : " + student.toString() + "And center : "+center.toString());
+        try {
+            String queryString = "from StudentCenter sc where sc.userMaster.userIdPk = "+student.getUserIdPk()+" and sc.center.centerIdPk = "+center.getCenterIdPk();
+            Query queryObject = getSession().createQuery(queryString);
+            return (StudentCenter) queryObject.uniqueResult();
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+    }
+    
+    public StudentCenter findStudentCenterForStudent(UserMaster student){
+        log.debug("getting StudentCenter instance with student : " + student.toString());
+        try {
+            String queryString = "from StudentCenter sc where sc.userMaster.userIdPk = "+student.getUserIdPk();
+            Query queryObject = getSession().createQuery(queryString);
+            return (StudentCenter) queryObject.uniqueResult();
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
             throw re;
         }
     }

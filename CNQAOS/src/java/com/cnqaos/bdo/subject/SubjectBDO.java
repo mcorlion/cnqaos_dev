@@ -60,11 +60,11 @@ public class SubjectBDO {
         }
     }
     
-    public List<Subject> getCenterList(){
+    public List<Subject> getSubjectList(){
         return subjectDAO.findAll();
     }
     
-    public Subject findCenter(Integer id){
+    public Subject findSubject(Integer id){
         return subjectDAO.findById(id);
     }
 }

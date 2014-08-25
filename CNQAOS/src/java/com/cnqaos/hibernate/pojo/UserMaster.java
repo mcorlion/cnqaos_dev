@@ -2,6 +2,7 @@ package com.cnqaos.hibernate.pojo;
 // Generated 23 Aug, 2014 9:46:56 PM by Hibernate Tools 3.6.0
 
 import com.cnqaos.hibernate.dao.StudentCenterDAO;
+import com.cnqaos.hibernate.dao.SubjectTeacherDAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -185,9 +186,25 @@ public class UserMaster implements java.io.Serializable {
                 .add("centerName", this.getCenterForStudent() != null ? this.getCenterForStudent().getCenterName() : "");
         return builder.build();
     }
+    
+    public JsonObject getJSONObjectForTeacher() {
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+
+        builder.add("idPk", userIdPk)
+                .add("id", id)
+                .add("name", name)
+                .add("surName", surName)
+                .add("dateOfBirth", this.getDateString())
+                .add("phoneNumber", phoneNumber)
+                .add("cellphoneNumber", cellphoneNumber)
+                .add("emailAddress", emailAddress)
+                .add("subjectId", this.getSubjectForTeacher() != null ? this.getSubjectForTeacher().getSubjectIdPk() : 0)
+                .add("subjectName", this.getSubjectForTeacher() != null ? this.getSubjectForTeacher().getSubjectName() : "");
+        return builder.build();
+    }
 
     private String getDateString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-yy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = sdf.format(dateOfBirth);
         return strDate;
     }
@@ -200,6 +217,16 @@ public class UserMaster implements java.io.Serializable {
             center = ((StudentCenter) studentCenterList.get(0)).getCenter();
         }
         return center;
+    }
+    
+    private Subject getSubjectForTeacher() {
+        Subject subject = null;
+        SubjectTeacherDAO subjectTeacherDAO = new SubjectTeacherDAO();
+        List subjectTeacherList = subjectTeacherDAO.findByProperty("userMaster", this);
+        if (subjectTeacherList != null && subjectTeacherList.size() > 0) {
+            subject = ((SubjectTeacher) subjectTeacherList.get(0)).getSubject();
+        }
+        return subject;
     }
 
 }
