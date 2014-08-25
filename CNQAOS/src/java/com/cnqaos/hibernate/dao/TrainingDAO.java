@@ -101,7 +101,7 @@ public class TrainingDAO extends BaseHibernateDAO {
 		return findByProperty(DESCRIPTION, description);
 	}
 
-	public List findAll() {
+	public List<Training> findAll() {
 		log.debug("finding all Training instances");
 		try {
 			String queryString = "from Training";

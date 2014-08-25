@@ -1,5 +1,61 @@
-	<div class="jumbotron text-center">
-		<h1>Training Page</h1>
+<div>
+    <table class="table">
+        <tr>  
+            <th>#</th>  
+            <td>Name</td>  
+            <th>Description</th>  
+            <th>Type</th>  
+            <th>    </th>  
+        </tr>
+        <tr data-ng-repeat="training in trainingList">
+            <td>{{$index+1 }}</td>
+            <td>{{training.name}}</td>
+            <td>{{training.description}}</td>
+            <td>{{training.type}}</td>
+            <td><p><a data-ng-click="edit(training)" href="javascript:;">Edit</a> | <a data-ng-click="delete(training)" href="javascript:;">Delete</a></p></td>
+        </tr>
+    </table>
+</div>
 
-		<p>{{ message }}</p>
-	</div>
+<div>
+    <form role="form" name="trainingForm" novalidate>
+        <input type="hidden" data-ng-model="id" />
+
+        <div class="row">
+            <div class="form-group col-xs-5 col-lg-4">
+                <label for="trainingName">Name</label>
+                <input type="text" name="trainingName" data-ng-model="training.name" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="trainingName" placeholder="Enter Traning Name">
+            </div>
+        </div>
+  
+        <div class="row">
+            <div class="form-group col-xs-5 col-lg-4">
+                <label for="description">Description</label>
+                <input type="text" name="description" data-ng-model="training.description" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="description" placeholder="Enter Traning Description">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-xs-5 col-lg-4">
+            <label for="trainingType">Training Type</label>
+            <select name="trainingType" id="trainingType" data-ng-model="training.typeId" class="form-control" ng-required="true" ng-options="tType.typeId as tType.type for tType in trainingType">
+                <option value="">-- Select Training Type --</option>
+            </select>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                <label for="center">Center</label>
+                <select name="center" data-ng-model="training.centers" class="form-control" ng-options="center.id as center.centerName for center in centerList" multiple>
+                    <option value="">-- Select Center --</option>
+                </select>
+                </div>
+            </div>
+        
+         <button data-ng-click="create()" class="btn btn-default">Submit</button>
+         <input type="reset" value="Cancel" class="btn btn-default" />
+
+    </form>
+</div>
+    

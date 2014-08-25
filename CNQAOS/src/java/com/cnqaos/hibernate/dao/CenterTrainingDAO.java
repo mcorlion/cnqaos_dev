@@ -76,7 +76,7 @@ public class CenterTrainingDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByProperty(String propertyName, Object value) {
+	public List<CenterTraining> findByProperty(String propertyName, Object value) {
 		log.debug("finding CenterTraining instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
