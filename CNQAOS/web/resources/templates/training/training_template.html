@@ -46,9 +46,9 @@
 
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                <label for="center">Center</label>
-                <select name="center" data-ng-model="training.centers" class="form-control" ng-options="center.id as center.centerName for center in centerList" multiple>
-                    <option value="">-- Select Center --</option>
+                <label for="subject">Subject</label>
+                <select name="subject" id="subject" data-ng-model="training.subjects" class="form-control" ng-options="subject.id as subject.subjectName for subject in subjectList" multiple>
+                    <option value="">-- Select Subjects --</option>
                 </select>
                 </div>
             </div>

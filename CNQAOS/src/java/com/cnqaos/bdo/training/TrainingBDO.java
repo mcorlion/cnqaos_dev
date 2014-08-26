@@ -7,10 +7,14 @@
 package com.cnqaos.bdo.training;
 
 import com.cnqaos.hibernate.dao.CenterTrainingDAO;
+import com.cnqaos.hibernate.dao.SubjectDAO;
 import com.cnqaos.hibernate.dao.TrainingDAO;
+import com.cnqaos.hibernate.dao.TrainingSubjectDAO;
 import com.cnqaos.hibernate.dao.TrainingTypeDAO;
 import com.cnqaos.hibernate.pojo.CenterTraining;
+import com.cnqaos.hibernate.pojo.Subject;
 import com.cnqaos.hibernate.pojo.Training;
+import com.cnqaos.hibernate.pojo.TrainingSubject;
 import com.cnqaos.hibernate.pojo.TrainingType;
 import java.util.List;
 import javax.json.Json;
@@ -24,14 +28,15 @@ import javax.json.JsonObjectBuilder;
 public class TrainingBDO {
     private TrainingDAO trainingDAO = new  TrainingDAO();
     private TrainingTypeDAO trainingTypeDAO  = new TrainingTypeDAO();
-    private CenterTrainingDAO centerTrainingDAO = new CenterTrainingDAO();
+    private SubjectDAO subjectDAO = new SubjectDAO();
+    private TrainingSubjectDAO trainingSubjectDAO  = new TrainingSubjectDAO();
 
     
-    public void create(String name,String description,int type,List<String> centersId) throws Exception{       
+    public void create(String name,String description,int type,List<String> subjectsId) throws Exception{       
         
     }
     
-    public void edit(int trainingId,String name,String description,int type,List<String> centersId) throws Exception {
+    public void edit(int trainingId,String name,String description,int type,List<String> subjectsId) throws Exception {
     
     }
     
@@ -45,7 +50,6 @@ public class TrainingBDO {
     
     public JsonArrayBuilder getTrainingCenterJSON() throws Exception{
         JsonArrayBuilder trainingCenterJson = Json.createArrayBuilder();
-        System.out.println(" training list "+trainingDAO.findAll());
         for(Training training : trainingDAO.findAll()){
             JsonObjectBuilder trainingJSON = Json.createObjectBuilder();
             trainingJSON.add("id",training.getTrainingIdPk())
@@ -53,17 +57,17 @@ public class TrainingBDO {
                     .add("description", training.getDescription())
                     .add("typeId",training.getTrainingType().getTrainingTypeIdPk())
                     .add("type",training.getTrainingType().getTrainingTypeName())
-                    .add("centers", this.getCentersJSON(training).build());
+                    .add("subjects", this.getSubjectJSON(training).build());
             trainingCenterJson.add(trainingJSON);
         }
     
         return trainingCenterJson;
     }
     
-    public JsonArrayBuilder getCentersJSON(Training training)throws Exception{
+    public JsonArrayBuilder getSubjectJSON(Training training)throws Exception{
        JsonArrayBuilder centerJson = Json.createArrayBuilder();
-            for(CenterTraining centerTraining : centerTrainingDAO.findByProperty("training",training)){
-                    centerJson.add(centerTraining.getCenter().getCenterIdPk());
+            for(TrainingSubject trainingSubject : trainingSubjectDAO.findByProperty("training",training)){
+                    centerJson.add(trainingSubject.getSubject().getSubjectIdPk());
             }
        return centerJson;
     }
@@ -72,6 +76,8 @@ public class TrainingBDO {
         return this.trainingTypeDAO.findAll();
     }
     
-    
+    public List<Subject> getSubjectList(){
+        return this.subjectDAO.findAll();
+    }
     
 }

@@ -87,8 +87,7 @@ public class Training  implements java.io.Serializable {
                 .add("name", trainingName)
                 .add("description", description)
                 .add("typeId",trainingType.getTrainingTypeIdPk())
-                .add("type",trainingType.getTrainingTypeName())
-                .add("centers",Json.createArrayBuilder());
+                .add("type",trainingType.getTrainingTypeName());
         return builder.build().toString();
     }
     
@@ -98,8 +97,7 @@ public class Training  implements java.io.Serializable {
                 .add("name", trainingName)
                 .add("description", description)
                 .add("typeId",trainingType.getTrainingTypeIdPk())
-                .add("type",trainingType.getTrainingTypeName())
-                .add("centers",Json.createArrayBuilder());
+                .add("type",trainingType.getTrainingTypeName());
         return builder.build();
     }
 }

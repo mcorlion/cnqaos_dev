@@ -97,9 +97,6 @@ public class Subject  implements java.io.Serializable {
                 .add("subjectName", subjectName);
         return builder.build();
     }
-
-
-
 }
 
 

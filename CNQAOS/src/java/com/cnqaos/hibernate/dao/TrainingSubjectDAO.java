@@ -76,7 +76,7 @@ public class TrainingSubjectDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByProperty(String propertyName, Object value) {
+	public List<TrainingSubject> findByProperty(String propertyName, Object value) {
 		log.debug("finding TrainingSubject instance with property: "
 				+ propertyName + ", value: " + value);
 		try {

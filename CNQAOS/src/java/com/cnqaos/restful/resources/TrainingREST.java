@@ -6,6 +6,7 @@
 package com.cnqaos.restful.resources;
 
 import com.cnqaos.bdo.training.TrainingBDO;
+import com.cnqaos.hibernate.pojo.Subject;
 import com.cnqaos.hibernate.pojo.Training;
 import com.cnqaos.hibernate.pojo.TrainingType;
 import java.util.List;
@@ -28,20 +29,23 @@ import javax.ws.rs.core.Response;
 @Path("/training")
 public class TrainingREST {
 
+    
     @GET
-    @Path("/trainingcenter/list")
+    @Path("/subjectlist")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTrainingCenterList() {
+    public Response getSubjetList(){
         TrainingBDO trainingBDO = new TrainingBDO();
-        JsonArrayBuilder trainingJSON = null;
+        JsonArrayBuilder subjectsJSON = Json.createArrayBuilder();
         try {
-            trainingJSON = trainingBDO.getTrainingCenterJSON();
-            System.out.println(" training center " + trainingJSON.build().toString());
+            for(Subject subject  : trainingBDO.getSubjectList()){
+                 subjectsJSON.add(subject.getJSONObject());
+            }
+            System.out.println(" training center " + subjectsJSON.build().toString());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
-        return Response.ok(trainingJSON.build().toString(), MediaType.APPLICATION_JSON).build();
+        return Response.ok(subjectsJSON.build().toString(), MediaType.APPLICATION_JSON).build();
     }
 
     @GET
@@ -82,12 +86,12 @@ public class TrainingREST {
     @Path("/add")
     @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createTraining(
+    public Response subjectsTraining(
             @DefaultValue("0") @FormParam("id") int id,
             @FormParam("name") String trainingName,
             @DefaultValue("NA") @FormParam("description") String description,
             @FormParam("typeId") int typeId,
-            @FormParam("centers") List<String> centerIds
+            @FormParam("subjects") List<String> subjectIds
     ) {
         TrainingBDO trainingBDO = new TrainingBDO();
         try {
@@ -95,11 +99,11 @@ public class TrainingREST {
             System.out.println(" " + trainingName);
             System.out.println(" " + description);
             System.out.println(" " + typeId);
-            System.out.println(" " + centerIds);
+            System.out.println(" " + subjectIds);
             if (id == 0) {
-                trainingBDO.create(trainingName, description, typeId, centerIds);
+                trainingBDO.create(trainingName, description, typeId, subjectIds);
             }else {
-                trainingBDO.edit(typeId, trainingName, description, typeId, centerIds);
+                trainingBDO.edit(typeId, trainingName, description, typeId, subjectIds);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

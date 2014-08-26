@@ -7,7 +7,7 @@
  "description":"description",
  "type": "test",
  "typeId": 1,
- "centers": [1,2]
+ "subjects": [1,2]
  }
  ***/
 
@@ -15,25 +15,25 @@
 admin.controller('TrainingController', function($scope, $http) {
 
     $scope.message = 'Training Controller';
-    $scope.centerList = [];
+    $scope.subjectList = [];
     $scope.training = {};
     $scope.trainingType = [];
     $scope.trainingList = [];
-    $scope.listURI = "/CNQAOS/rest/training/trainingcenter/list";
-    $scope.centerListURI = "/CNQAOS/rest/center/list";
+    $scope.listURI = "/CNQAOS/rest/training/list";
+    $scope.subjectListURI = "/CNQAOS/rest/training/subjectlist";
     $scope.trainingTypeURI = "/CNQAOS/rest/training/typelist";
     $scope.addURI = "/CNQAOS/rest/training/add";
     $scope.deleteURI = "/CNQAOS/rest/training/delete";
 
 
     // methods for student
-    // Get the center list 
-    $http.get($scope.centerListURI)
+    // Get the subject list 
+    $http.get($scope.subjectListURI)
             .success(function(data) {
-                $scope.centerList = data;
+                $scope.subjectList = data;
             })
             .error(function(data) {
-                $scope.error = "An Error has occured while loading centers!";
+                $scope.error = "An Error has occured while loading subjects!";
             });
 
     // Get the training type list 
@@ -51,11 +51,13 @@ admin.controller('TrainingController', function($scope, $http) {
                 $scope.trainingList = data;
             })
             .error(function(data) {
-                $scope.error = "An Error has occured while loading training centers!";
+                $scope.error = "An Error has occured while loading training!";
             });
 
     var transform = function(data) {
-        return $.param(data);
+        var modifydata  = $.param(data,true);
+        console.log("param data "+modifydata);
+        return modifydata;
     }
 
     $scope.create = function() {
@@ -92,7 +94,7 @@ admin.controller('TrainingController', function($scope, $http) {
         $scope.training.name = training.name;
         $scope.training.type = training.type;
         $scope.training.typeId = training.typeId;
-        $scope.training.centers = training.centers;
+        $scope.training.subjects = training.subjects;
     }
 
     $scope.delete = function(training) {
