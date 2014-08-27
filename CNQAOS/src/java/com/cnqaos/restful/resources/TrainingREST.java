@@ -70,11 +70,9 @@ public class TrainingREST {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTrainingList() {
         TrainingBDO trainingBDO = new TrainingBDO();
-        JsonArrayBuilder trainingJSON = Json.createArrayBuilder();
+        JsonArrayBuilder trainingJSON = null;
         try {
-            for (Training training : trainingBDO.getTrainingList()) {
-                trainingJSON.add(training.getJSONObject());
-            }
+            trainingJSON = trainingBDO.getTrainingCenterJSON();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

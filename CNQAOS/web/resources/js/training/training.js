@@ -95,6 +95,7 @@ admin.controller('TrainingController', function($scope, $http) {
         $scope.training.type = training.type;
         $scope.training.typeId = training.typeId;
         $scope.training.subjects = training.subjects;
+        console.log(training);
     }
 
     $scope.delete = function(training) {
