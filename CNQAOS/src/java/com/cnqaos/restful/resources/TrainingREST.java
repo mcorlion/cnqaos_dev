@@ -101,7 +101,7 @@ public class TrainingREST {
             if (id == 0) {
                 trainingBDO.create(trainingName, description, typeId, subjectIds);
             }else {
-                trainingBDO.edit(typeId, trainingName, description, typeId, subjectIds);
+                trainingBDO.edit(id, trainingName, description, typeId, subjectIds);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

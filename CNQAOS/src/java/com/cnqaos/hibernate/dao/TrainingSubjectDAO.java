@@ -1,5 +1,6 @@
 package com.cnqaos.hibernate.dao;
 
+import com.cnqaos.hibernate.pojo.Training;
 import java.util.List;
 
 import org.hibernate.LockOptions;
@@ -137,4 +138,11 @@ public class TrainingSubjectDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+        
+        public static void main(String[] args) {
+            TrainingDAO tDAO = new TrainingDAO();
+            TrainingSubjectDAO dao = new TrainingSubjectDAO();
+            Training training = tDAO.findById(2);
+            System.out.println(dao.findByProperty("training", training));
+    }
 }
