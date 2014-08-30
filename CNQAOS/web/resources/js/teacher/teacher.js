@@ -20,6 +20,7 @@
 // create the controller and inject Angular's $scope
 admin.controller('TeacherController', function($scope,$http) {
     // create a message to display in our view
+    $scope.toggleForm = false;
     $scope.message = 'Teacher Controller';
     $scope.teacher = {};
     $scope.teacherList = [];
@@ -90,6 +91,7 @@ admin.controller('TeacherController', function($scope,$http) {
         $scope.teacher.emailAddress = teacher.emailAddress;
         $scope.teacher.subjectId = teacher.subjectId;
         $scope.teacher.subjectName = teacher.subjectName;
+        $scope.toggleForm = true;
     }
 
     $scope.cancel=function(){
@@ -116,6 +118,14 @@ admin.controller('TeacherController', function($scope,$http) {
             $scope.error = "An Error has occured while deleting teacher!"; 
             console.log(data);
         });
+    }
+    
+    $scope.showForm=function(){
+        $scope.toggleForm = true;
+    }
+
+    $scope.hideForm=function(){
+        $scope.toggleForm = false;            
     }
 
 });

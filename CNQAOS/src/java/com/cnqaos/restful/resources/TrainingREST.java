@@ -83,7 +83,6 @@ public class TrainingREST {
     @POST
     @Path("/add")
     @Consumes("application/x-www-form-urlencoded")
-    @Produces(MediaType.APPLICATION_JSON)
     public Response subjectsTraining(
             @DefaultValue("0") @FormParam("id") int id,
             @FormParam("name") String trainingName,
@@ -93,11 +92,11 @@ public class TrainingREST {
     ) {
         TrainingBDO trainingBDO = new TrainingBDO();
         try {
-            System.out.println(" " + id);
-            System.out.println(" " + trainingName);
-            System.out.println(" " + description);
-            System.out.println(" " + typeId);
-            System.out.println(" " + subjectIds);
+            System.out.println(" id " + id);
+            System.out.println(" name " + trainingName);
+            System.out.println(" description " + description);
+            System.out.println(" typeId " + typeId);
+            System.out.println(" subjectIds " + subjectIds);
             if (id == 0) {
                 trainingBDO.create(trainingName, description, typeId, subjectIds);
             }else {

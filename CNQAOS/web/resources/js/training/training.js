@@ -13,7 +13,7 @@
 
 // create the controller and inject Angular's $scope
 admin.controller('TrainingController', function($scope, $http) {
-
+    $scope.toggleForm = false;
     $scope.message = 'Training Controller';
     $scope.subjectList = [];
     $scope.training = {};
@@ -95,7 +95,7 @@ admin.controller('TrainingController', function($scope, $http) {
         $scope.training.type = training.type;
         $scope.training.typeId = training.typeId;
         $scope.training.subjects = training.subjects;
-        console.log(training);
+        $scope.toggleForm = true;
     }
 
     $scope.delete = function(training) {
@@ -104,7 +104,8 @@ admin.controller('TrainingController', function($scope, $http) {
             method: 'POST',
             url: $scope.deleteURI,
             data: training.id,
-            headers: {'Content-Type': 'text/plain; charset=UTF-8'}
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
         })
                 .success(function(data) {
                     $.each($scope.trainingList, function(i) {
@@ -119,5 +120,11 @@ admin.controller('TrainingController', function($scope, $http) {
                     console.log(data);
                 });
     }
+    $scope.showForm=function(){
+        $scope.toggleForm = true;
+    }
 
+    $scope.hideForm=function(){
+        $scope.toggleForm = false;            
+    }
 });

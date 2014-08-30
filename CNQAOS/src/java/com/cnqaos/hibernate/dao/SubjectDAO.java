@@ -147,6 +147,7 @@ public class SubjectDAO extends BaseHibernateDAO {
         log.debug("finding Subject List by subjectIds");
         try {
             String queryString = "from Subject s where s.subjectIdPk in (" + subjectIds + ")";
+            System.out.println(" "+queryString);
             Query queryObject = getSession().createQuery(queryString);
             return queryObject.list();
         } catch (RuntimeException re) {
@@ -155,16 +156,16 @@ public class SubjectDAO extends BaseHibernateDAO {
         }
     }
     
-    public static void main(String[] args) {
-        SubjectDAO dao = new SubjectDAO();
-        String str = "1, 2";
-        List list = dao.findBySubjectIds(str);
-        System.out.println(list.size());
-        
-        List<String> strList = new ArrayList<>();
-        strList.add("1");
-        strList.add("2");
-        strList.add("3");
-        System.out.println(strList.toString().substring(1, strList.toString().length()-1));
-    }
+//    public static void main(String[] args) {
+//        SubjectDAO dao = new SubjectDAO();
+//        String str = "1, 2";
+//        List list = dao.findBySubjectIds(str);
+//        System.out.println(list.size());
+//        
+//        List<String> strList = new ArrayList<>();
+//        strList.add("1");
+//        strList.add("2");
+//        strList.add("3");
+//        System.out.println(strList.toString().substring(1, strList.toString().length()-1));
+//    }
 }

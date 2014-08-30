@@ -1,0 +1,56 @@
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; src: local('Lato Regular'), local('Lato-Regular'), url(http://fonts.gstatic.com/s/lato/v10/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; src: local('Lato Bold'), local('Lato-Bold'), url(http://fonts.gstatic.com/s/lato/v10/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff'); }
+html, body, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { background: transparent; border: 0; margin: 0; outline: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; font-size: 15px; color: #666666; margin: 0; padding: 0; text-decoration: none; background: #ffffff; }
+input[type="text"], input[type="password"], input[type="number"]  { margin: 0px; padding: 0px; border: 1px solid #e0e0e0; background: #FFF; font-size: 15px; color: #666666; padding: 10px; font-family: 'Lato', sans-serif; border-radius: 3px; }
+select, textarea { margin: 0px; padding: 0px; border: 1px solid #e0e0e0; background: #FFF; font-size: 15px; color: #666666; padding: 10px; font-family: 'Lato', sans-serif; resize: none;  border-radius: 3px; }
+h1,h2,h3,h4,h5,h6 { font-weight: normal; }
+input:focus, select:focus, textarea:focus { border: 1px solid #74b5db; box-shadow: 0 0px 5px rgba(116,181,219,.8); outline: none; }
+p { margin: 0 0 20px 0; padding: 0px; line-height: 20px; }
+img { border: none; outline: none; }
+a { color: #4d74ab; text-decoration: none; font-size: 15px; outline: none; font-family: 'Lato', sans-serif; }
+a:hover { color: #ffa70c; text-decoration: none; outline: none; }
+.clear { clear: both; }
+.relative { position: relative; }
+.fleft { float: left !important; }
+.fright { float: right !important; }
+.valignmidd { vertical-align: middle; }
+/* Common CSS End Here */
+
+/* Homepage CSS Start here */
+#main { display: block; }
+#top-container { display: block;  }
+#midd-container { display: block;  }
+#bott-container { display: block; margin-top: 20px; }
+.logo { padding: 15px 5px; }
+.navigation { background: #74b5db; }
+.home-icon { width: 45px; height: 45px; float: left; border-right: 6px solid #fff; text-align: center; }
+.home-icon img { margin-top: 10px; }
+.navigation-link { width: 90%; float: left; } 
+.navigation-link ul li { float: left; list-style-type: none; background: url(../images/bullet.gif) no-repeat 15px center; }
+.navigation-link ul li a { font-weight: 700; color: #fff; padding: 0 30px; height: 45px; line-height: 45px; display: block; }
+.navigation-link ul li a:hover { background:  url(../images/bullet.gif) no-repeat 15px center #64a4ca; }
+.midd-content { padding: 20px 50px; }
+.listingarea { display: block; margin-bottom: 20px; }
+.listingarea .table { background: #dddddd; }
+.listingarea .table tr th { background: #74b5db; font-weight: 700; padding: 10px; }
+.listingarea .table tr td { background: #fff; padding: 12px; }
+a.common-btn { background: #74b5db; border-radius: 3px; height: 35px; line-height: 35px; border: 1px solid #61a1c6; padding: 0 20px; display: inline-block; color: #fff; }
+a:hover.common-btn { background: #ffa70c; border: 1px solid #ea9500; }
+.common-btn { background: #74b5db; border-radius: 3px; border: 1px solid #61a1c6; padding: 10px 20px; display: inline-block; color: #fff; cursor: pointer; font-family: 'Lato', sans-serif; font-size: 15px; }
+:hover.common-btn { background: #ffa70c; border: 1px solid #ea9500; }
+.listing-add-form { display: block; width: 60%; margin: auto; border: 1px solid #ddd; padding: 20px; }
+.listing-add-form .row { margin-bottom: 12px; }
+.listing-add-form label { width: 250px; float: left; line-height: 30px; }
+.listing-add-form input[type="text"], .listing-add-form input[type="password"], .listing-add-form input[type="number"], .listing-add-form select, .listing-add-form textarea { width: 400px; }
+.errormsg { display: block; color: #ff8989; font-size: 12px; padding-top: 3px; padding-left: 250px; }
+.bottlink-part { background: #74b5db; padding: 20px 50px; }
+.copyright { padding: 20px; text-align: center; font-size: 13px; }
+.bottleft { width: 30%; float: left; }
+.bottright { width: 50%; float: right; }
+a.facebooklink { font-size: 16px; color: #FFF; }
+a:hover.facebooklink { color: #4d74ab; }
+.bottlink-block { width: 200px; float: left; }
+.bottlink-block ul li { list-style-type: none; margin-bottom: 3px; }
+.bottlink-block ul li a { color: #FFF; }
+.bottlink-block ul li a:hover { color: #4d74ab; }

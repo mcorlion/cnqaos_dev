@@ -1,93 +1,102 @@
-<div>
-    <table class="table">
-        <tr>  
-            <th>#</th>  
-            <td>ID</td>  
-            <th>First Name</th>  
-            <th>Last Name</th>  
-            <th>DOB</th>  
-            <th>Landline</th>  
-            <th>Mobile</th> 
-            <th>Email</th> 
-            <th>Subject</th>  
-            <th>          </th>  
-        </tr>
-        <tr data-ng-repeat="teacher in teacherList">
-            <td>{{$index+1 }}</td>
-            <td>{{teacher.id}}</td>
-            <td>{{teacher.name}}</td>
-            <td>{{teacher.surName}}</td>
-            <td>{{teacher.dateOfBirth}}</td>
-            <td>{{teacher.phoneNumber}}</td>
-            <td>{{teacher.cellphoneNumber}}</td>
-            <td>{{teacher.emailAddress}}</td>
-            <td>{{teacher.subjectName}}</td>
-            <td><p><a data-ng-click="edit(teacher)" href="javascript:;">Edit</a> | <a data-ng-click="delete(teacher)" href="javascript:;">Delete</a></p></td>
-        </tr>
-    </table>
+<div id="midd-container">
+    <div class="midd-content">
+        <div class="listingarea">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1" class="table">
+                <tr>  
+                    <th align="center">#</th>  
+                    <td align="center">ID</td>  
+                    <th align="center">First Name</th>  
+                    <th align="center">Last Name</th>  
+                    <th align="center">DOB</th>  
+                    <th align="center">Landline</th>  
+                    <th align="center">Mobile</th> 
+                    <th align="center">Email</th> 
+                    <th align="center">Subject</th>  
+                    <th>          </th>  
+                </tr>
+                <tr data-ng-repeat="teacher in teacherList">
+                    <td align="center">{{$index + 1}}</td>
+                    <td align="center">{{teacher.id}}</td>
+                    <td align="center">{{teacher.name}}</td>
+                    <td align="center">{{teacher.surName}}</td>
+                    <td align="center">{{teacher.dateOfBirth}}</td>
+                    <td align="center">{{teacher.phoneNumber}}</td>
+                    <td align="center">{{teacher.cellphoneNumber}}</td>
+                    <td align="center">{{teacher.emailAddress}}</td>
+                    <td align="center">{{teacher.subjectName}}</td>
+                    <td align="center"><a data-ng-click="edit(teacher)" href="javascript:;" title="Edit"><img alt="Edit" src="resources/images/edit-icon.gif" /></a>&nbsp;&nbsp;&nbsp;<a data-ng-click="delete(teacher)" href="javascript:;" title="Delete"><img alt="Delete" src="resources/images/delete-icon.gif" /></a></td>
+                </tr>
+            </table>
+        </div>    
+        <div>
+
+            <button data-ng-click="showForm()" class="common-btn">Add New</button>
+
+            <div ng-show="toggleForm" class="listing-add-form">
+                <form role="form" name="teacherForm" novalidate>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="teacherID">ID</label>
+                            <input type="text" name="teacherID" data-ng-model="teacher.id" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="teacherID" placeholder="Enter teacher ID">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="teacherName">First Name</label>
+                            <input type="text" name="teacherName" data-ng-model="teacher.name" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="teacherName" placeholder="Enter First Name">            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="surName">Last Name</label>
+                            <input type="text" name="surName" data-ng-model="teacher.surName" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="surName" placeholder="Enter Last Name">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="dob">DOB</label>
+                            <input type="text" name="dob" data-ng-model="teacher.dateOfBirth" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="dob" placeholder="Enter Date of Birth">            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="phone">Landline</label>
+                            <input type="text" name="phone" data-ng-model="teacher.phoneNumber" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="phone" placeholder="Enter Landline Number">            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" name="mobile" data-ng-model="teacher.cellphoneNumber" ng-minlength="1" ng-maxlength="50" ng-required="false" class="form-control" id="mobile" placeholder="Enter Mobile Number">            
+                        </div>
+                    </div>            
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="email">E-mail</label>
+                            <input type="text" name="email" data-ng-model="teacher.emailAddress" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="subject">Subject</label>
+                            <select name="subject" id="subject"  data-ng-model="teacher.subjectId" class="form-control" ng-options="subject.id as subject.subjectName for subject in subjectList">
+                                <option value="">-- Select Subject --</option>
+                            </select>
+                        </div>
+                    </div>
+                     <label>&nbsp;</label>
+                    <button data-ng-click="create()" class="btn btn-default common-btn">Submit</button>&nbsp;
+                    <input type="reset" data-ng-click="hideForm()" value="Cancel" class="btn btn-default common-btn" />
+                </form>
+            </div>
+        </div>
+    </div>    
 </div>
-    <div>
-        <form role="form" name="teacherForm" novalidate>
-
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                    <label for="teacherID">ID</label>
-                    <input type="text" name="teacherID" data-ng-model="teacher.id" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="teacherID" placeholder="Enter teacher ID">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="teacherName">First Name</label>
-                <input type="text" name="teacherName" data-ng-model="teacher.name" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="teacherName" placeholder="Enter First Name">            
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="surName">Last Name</label>
-                <input type="text" name="surName" data-ng-model="teacher.surName" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="surName" placeholder="Enter Last Name">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="dob">DOB</label>
-                <input type="text" name="dob" data-ng-model="teacher.dateOfBirth" ng-minlength="1" ng-maxlength="50" ng-required="true" class="form-control" id="dob" placeholder="Enter Date of Birth">            
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="phone">Landline</label>
-                <input type="text" name="phone" data-ng-model="teacher.phoneNumber" ng-minlength="1" ng-maxlength="8" ng-required="true" class="form-control" id="phone" placeholder="Enter Landline Number">            
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="mobile">Mobile</label>
-                <input type="text" name="mobile" data-ng-model="teacher.cellphoneNumber" ng-minlength="1" ng-maxlength="50" ng-required="false" class="form-control" id="mobile" placeholder="Enter Mobile Number">            
-                </div>
-            </div>            
-
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="email">E-mail</label>
-                <input type="text" name="email" data-ng-model="teacher.emailAddress" ng-minlength="1" ng-maxlength="20" ng-required="true" class="form-control" id="email" placeholder="Enter Email">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                <label for="subject">Subject</label>
-                <select name="subject"  data-ng-model="teacher.subjectId" class="form-control" ng-options="subject.id as subject.subjectName for subject in subjectList">
-                    <option value="">-- Select Subject --</option>
-                </select>
-                </div>
-            </div>
-            
-             <button data-ng-click="create()" class="btn btn-default">Submit</button>
-             <button data-ng-click="cancel()" class="btn btn-default">Cancel</button>
-        </form>
-    </div>

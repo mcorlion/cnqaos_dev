@@ -1,29 +1,40 @@
-<div>
-    <table class="table">
-        <tr>  
-            <th>#</th>  
-            <td>Name</td>  
-            <th>          </th>  
-        </tr>
-        <tr data-ng-repeat="subject in subjectList">
-            <td>{{$index+1 }}</td>
-            <td>{{subject.subjectName}}</td>
-            <td><p><a data-ng-click="edit(subject)" href="javascript:;">Edit</a> | <a data-ng-click="delete(subject)" href="javascript:;">Delete</a></p></td>
-        </tr>
-    </table>
-</div>
-    <div>
-        <form role="form" name="subjectForm" novalidate>
-            <input type="hidden" data-ng-model="id" />
-            <div class="row">
-                <div class="form-group col-xs-5 col-lg-4">
-                    <label for="subjectName">Subject Name</label>
-                    <input type="text" name="subjectName" data-ng-model="subject.subjectName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="subjectName" placeholder="Enter Subject Name">
-                </div>
-            </div>
-                      
-             <button data-ng-click="create()" class="btn btn-default">Submit</button>
-             <input type="reset" value="Cancel" class="btn btn-default" />
+<div id="midd-container">
+    <div class="midd-content">
+        <div class="listingarea">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1" class="table">
+                <tr>  
+                    <th align="center">#</th>  
+                    <td align="center">Name</td>  
+                    <th>          </th>  
+                </tr>
+                <tr data-ng-repeat="subject in subjectList">
+                    <td align="center">{{$index + 1}}</td>
+                    <td align="center">{{subject.subjectName}}</td>
+                    <td align="center"><a data-ng-click="edit(subject)" href="javascript:;" title="Edit"><img alt="Edit" src="resources/images/edit-icon.gif" /></a>&nbsp;&nbsp;&nbsp;<a data-ng-click="delete(subject)" href="javascript:;" title="Delete"><img alt="Delete" src="resources/images/delete-icon.gif" /></a></td>
+                </tr>
+            </table>
+        </div>    
+        <div>
 
-        </form>
-    </div>
+            <button data-ng-click="showForm()" class="common-btn">Add New</button>
+
+            <div ng-show="toggleForm" class="listing-add-form">
+                <form role="form" name="subjectForm" novalidate>
+                    <input type="hidden" data-ng-model="id" />
+                    <div class="row">
+                        <div class="form-group col-xs-5 col-lg-4">
+                            <label for="subjectName">Subject Name</label>
+                            <input type="text" name="subjectName" data-ng-model="subject.subjectName" ng-minlength="1" ng-maxlength="50"  ng-required="true" class="form-control" id="subjectName" placeholder="Enter Subject Name">
+                        </div>
+                    </div>
+
+                    <label>&nbsp;</label>
+                    <button data-ng-click="create()" class="btn btn-default common-btn">Submit</button>&nbsp;
+                    <input type="reset" data-ng-click="hideForm()" value="Cancel" class="btn btn-default common-btn" />
+
+                </form>
+
+            </div>
+        </div>
+    </div>    
+</div>

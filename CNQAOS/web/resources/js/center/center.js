@@ -18,6 +18,7 @@ Center entity has below attributes.
 admin.controller('CenterController', function($scope,$http) {
         // property of center
         $scope.message = 'Center Conroller';
+        $scope.toggleForm = false;
         $scope.center={};
         $scope.centerList=[];
         $scope.listURI="/CNQAOS/rest/center/list";
@@ -75,6 +76,8 @@ admin.controller('CenterController', function($scope,$http) {
             $scope.center.description = center.description;
             $scope.center.latitude = center.latitude;
             $scope.center.longitude = center.longitude;
+            $scope.toggleForm = true;
+            
         }
             
         
@@ -103,6 +106,15 @@ admin.controller('CenterController', function($scope,$http) {
                 console.log(data);
             });
         }
+        
+        $scope.showForm=function(){
+            $scope.toggleForm = true;
+        }
+        
+        $scope.hideForm=function(){
+            $scope.toggleForm = false;            
+        }
+        
 
 });
 
